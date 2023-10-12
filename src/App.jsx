@@ -6,7 +6,7 @@ import { Html5QrcodeScanner, Html5Qrcode } from "html5-qrcode"
 
 
 
-export default function Worker(){
+export default function App(){
   const [message, setMessage] = useState("")
   const [scanResult, setScanResult] = useState("")
   const [scanTime, setScanTime] = useState("")
