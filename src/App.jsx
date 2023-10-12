@@ -142,6 +142,14 @@ export default function App(){
     return (
         <>
         <form onSubmit={handleSubmit} className="new-item-form">
+            <nav className="nav">
+              <label className="site-title">
+                NFCONTROL
+              </label>
+              <ul>
+                <a href="https://nokerr21.github.io/nfcontrol/">About</a>
+              </ul>
+            </nav>
             <div className="form-row">
                 <label>READ NFC</label>
                 <button onClick={() => readTag()} className="btn">READ</button>
