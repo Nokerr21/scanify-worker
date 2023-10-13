@@ -206,6 +206,7 @@ export default function App(){
                 {QR.title}
               </label>
               <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">Delete</button>
+              <button onClick={() => writeTag(QR.title)} className="btn">WRITE TO NFC</button>
           </li>
             )
           })}
