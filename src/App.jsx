@@ -11,7 +11,10 @@ export default function App(){
   const [scanResult, setScanResult] = useState("")
   const [scanTime, setScanTime] = useState("")
   const [scannerState, setScannerState] = useState("")
+  const [newQR, setNewQR] = useState("")
+  const [QRs, setQRs] = useState([])
 
+  
   
   
 
@@ -33,8 +36,8 @@ export default function App(){
    //   html5QrcodeScanner.render(onScanSuccess, onScanError);
     //}
     html5QrcodeScanner.render(onScanSuccess, onScanError);
-    setScannerState(html5QrcodeScanner.getState());
-    console.log(html5QrcodeScanner.getState());
+    //setScannerState(html5QrcodeScanner.getState());
+    //console.log(html5QrcodeScanner.getState());
 
 
     var today = new Date();
@@ -46,11 +49,10 @@ export default function App(){
         // Handle on success condition with the decoded text or result.
         console.log(`Scan result: ${decodedText}`, decodedResult);
         setScanResult(decodedText);
-        setScanTime(dateTime)
+        setScanTime(dateTime);
         consoleLogQR("Message: '" + decodedText + "' decoded!" + "\n" + "TimeStamp: " + dateTime);
         // ...
         html5QrcodeScanner.clear();
-        
         // ^ this will stop the scanner (video feed) and clear the scan area.
     }
 
@@ -63,6 +65,32 @@ export default function App(){
     function handleSubmit(e) {
         e.preventDefault()
     }
+
+    function handleSubmitQRList(e) {
+      e.preventDefault()
+      if (newQR != ""){
+        setQRs((currentQRs) => {
+          return [... currentQRs, {id: crypto.randomUUID(), title: newQR, completed: false}, ]
+        })
+      }
+  }
+
+  function toggleQR(id, completed){
+    setQRs(currentQRs => {
+      return currentQRs.map(QR => {
+        if(QR.id === id) {
+          return { ...QR, completed}
+        }
+        return QR
+      })
+    })
+  }
+
+  function deleteQR(id){
+    setQRs(currentQRs => {
+      return currentQRs.filter(QR => QR.id !== id)
+    })
+  }
 
 
 
@@ -87,6 +115,7 @@ export default function App(){
                 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
                 var dateTime = date+' '+time;
                 consoleLog("---- data ----\n" + decoder.decode(record.data) + "\n" + "TimeStamp: " + dateTime);
+                
               }
             }
           } catch(error) {
@@ -137,11 +166,12 @@ export default function App(){
         logElement.innerHTML += data + '\n';
       }
 
+
     
     
     return (
         <>
-        <form onSubmit={handleSubmit} className="new-item-form">
+        <form onSubmit={handleSubmitQRList} className="new-item-form">
             <nav className="nav">
               <label className="site-title">
                 NFCONTROL
@@ -162,7 +192,25 @@ export default function App(){
               <button onClick={() => writeTag(scanResult)} className="btn">WRITE QR TO NFC</button>
               <pre id="logWrite"></pre>
             </div>
+            <div className="form-row">
+              <button id="buttonList" onClick={() => setNewQR(scanResult)} className="btn">ADD QR TO LIST</button>
+            </div>
         </form>
+        <h1 className="header">QR CODES LIST</h1>
+        <ul className="list">
+          {QRs.map(QR => {
+            return (
+            <li key={QR.id}>
+              <label>
+                <input type="checkbox" checked={QR.completed} onChange={e => toggleQR(QR.id, e.target.checked)} />
+                {QR.title}
+              </label>
+              <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">Delete</button>
+          </li>
+            )
+          })}
+          
+        </ul>
         </>
     )
 }
