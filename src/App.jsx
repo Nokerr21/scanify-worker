@@ -51,6 +51,12 @@ export default function App(){
         setScanResult(decodedText);
         setScanTime(dateTime);
         consoleLogQR("Message: '" + decodedText + "' decoded!" + "\n" + "TimeStamp: " + dateTime);
+        setNewQR(decodedText);
+        if (decodedText != ""){
+          setQRs((currentQRs) => {
+            return [... currentQRs, {id: crypto.randomUUID(), title: decodedText, completed: false}, ]
+          })
+        }
         // ...
         html5QrcodeScanner.clear();
         // ^ this will stop the scanner (video feed) and clear the scan area.
@@ -171,7 +177,7 @@ export default function App(){
     
     return (
         <>
-        <form onSubmit={handleSubmitQRList} className="new-item-form">
+        <form onSubmit={handleSubmit} className="new-item-form">
             <nav className="nav">
               <label className="site-title">
                 NFCONTROL
@@ -192,17 +198,14 @@ export default function App(){
               <button onClick={() => writeTag(scanResult)} className="btn">WRITE QR TO NFC</button>
               <pre id="logWrite"></pre>
             </div>
-            <div className="form-row">
-              <button id="buttonList" onClick={() => setNewQR(scanResult)} className="btn">ADD QR TO LIST</button>
-            </div>
         </form>
         <h1 className="header">QR CODES LIST</h1>
         <ul className="list">
+          {QRs.length === 0 && "No QR codes stored"}
           {QRs.map(QR => {
             return (
             <li key={QR.id}>
               <label>
-                <input type="checkbox" checked={QR.completed} onChange={e => toggleQR(QR.id, e.target.checked)} />
                 {QR.title}
               </label>
               <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">Delete</button>

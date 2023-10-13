@@ -74,7 +74,7 @@
   .list {
     margin: 0;
     padding: 0;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     list-style: none;
   }
   
@@ -114,17 +114,7 @@
     position: absolute;
   }
   
-  .list li label::before {
-    content: "";
-    display: block;
-    width: 0.9rem;
-    height: 0.9rem;
-    background: hsl(200, 100%, 90%);
-    border-radius: 0.25em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  
   
   .list li label:hover::before {
     background: hsl(200, 100%, 80%);
