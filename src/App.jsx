@@ -189,25 +189,25 @@ export default function App(){
             <div className="form-row">
                 <label>READ NFC</label>
                 <button onClick={() => readTag()} className="btn">READ</button>
-                <pre id="log"></pre>
+                <pre className="log" id="log"></pre>
             </div>
             <div className="form-row">
               <label>READ QR CODE</label>
               <div id="readerQR"></div>
-              <pre id="logQR"></pre>
+              <pre className="log" id="logQR"></pre>
               <button onClick={() => writeTag(scanResult)} className="btn">WRITE QR TO NFC</button>
-              <pre id="logWrite"></pre>
+              <pre className="log" id="logWrite"></pre>
             </div>
         </form>
-        <h1 className="header">QR CODES LIST</h1>
+        <h1 className="header">SCANNED QR CODES</h1>
         <ul className="list">
           {QRs.length === 0 && "No QR codes stored"}
           {QRs.map(QR => {
             return (
             <li key={QR.id}>
-              <label>
+              <pre className="litem">
                 {QR.title}
-              </label>
+              </pre>
               <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">Delete</button>
               <button onClick={() => writeTag(QR.title)} className="btn">WRITE TO NFC</button>
           </li>

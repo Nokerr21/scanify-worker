@@ -114,7 +114,17 @@
     position: absolute;
   }
   
-  
+  .list li label::before {
+    content: "";
+    display: triangle;
+    width: 0.9rem;
+    height: 0.9rem;
+    background: hsl(200, 100%, 90%);
+    border-radius: 0.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .list li label:hover::before {
     background: hsl(200, 100%, 80%);
@@ -130,6 +140,12 @@
   
   .list li:has(input:checked) label:hover::before {
     background: hsl(200, 100%, 30%);
+  }
+
+  .litem {
+    overflow-wrap: break-word;
+    max-width:150px;
+    white-space:pre-wrap;
   }
 
   .container {
@@ -175,4 +191,10 @@
   
   .nav li:hover {
     background-color: #777;
+  }
+
+  .log {
+    overflow-wrap: break-word;
+    max-width:400px;
+    white-space:pre-wrap;
   }
