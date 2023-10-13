@@ -45,11 +45,6 @@
     background: hsl(0, 100%, 40%, 0.1);
     border: 1px solid hsl(0, 100%, 40%);
     color: hsl(0, 100%, 40%);
-    padding: 0.5em 0.75em;
-    border-radius: 0.5em;
-    cursor: pointer;
-    outline: none;
-    font-size: 0.9em;
   }
   
   .btn.btn-danger:hover,
@@ -149,7 +144,7 @@
 
   .litem {
     overflow-wrap: break-word;
-    width:140px;
+    width: 100px;
     white-space:pre-wrap;
   }
 
