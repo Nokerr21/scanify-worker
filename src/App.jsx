@@ -33,7 +33,10 @@ export default function App(){
      // }
     //})
     const html5QrcodeScanner = new Html5QrcodeScanner(
-      "readerQR", { fps: 5, qrbox: 250 });
+      "readerQR", { fps: 5, qrbox: 250, useBarCodeDetectorIfSupported: true,
+        willReadFrequently: true,
+        showZoomSliderIfSupported: true,
+        defaultZoomValueIfSupported: 5 });
     //console.log(html5QrcodeScanner.getState());
 
     
