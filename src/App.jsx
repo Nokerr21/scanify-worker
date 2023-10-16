@@ -1,8 +1,7 @@
 import "./styles.css"
 import { useEffect, useState } from "react"
 import { Html5QrcodeScanner, Html5Qrcode } from "html5-qrcode"
-import Html5QrcodePlugin from './Html5QrcodePlugin.jsx';
-import ResultContainerPlugin from './ResultContainerPlugin.jsx';
+import { QrCodeScanner } from "./QrCodeScanner"
 
 
 
@@ -21,46 +20,17 @@ export default function App(){
   })
 
   
-  const [decodedResults, setDecodedResults] = useState([]);
-  const onNewScanResult = (decodedText, decodedResult) => {
-      console.log("App [result]", decodedResult);
-      setDecodedResults(prev => [...prev, decodedResult]);
-      if (decodedText != ""){
-        setQRs((currentQRs) => {
-          return [... currentQRs, {id: crypto.randomUUID(), title: decodedText, completed: false}, ]
-        })
-      }
-  };
-
-
-
-  
   useEffect(() =>{
     localStorage.setItem("QRs", JSON.stringify(QRs))
   }, [QRs])
   
 
   useEffect(() => {
+    const html5QrcodeScanner = new Html5QrcodeScanner(
+      "readerQR", { fps: 5, qrbox: 250 });
 
-   // Html5Qrcode.getCameras().then(devices => {
-    //  if(devices && devices.length){
-     //   var cameraId = devices[0].id;
-        
-     // }
-    //})
-   // const html5QrcodeScanner = new Html5QrcodeScanner(
-    //  "readerQR", { fps: 5, qrbox: 250 });
-    //console.log(html5QrcodeScanner.getState());
-
-    
-    
-   // if (html5QrcodeScanner.getState() == "NOT_STARTED"){
-   //   html5QrcodeScanner.render(onScanSuccess, onScanError);
-    //}
-   // html5QrcodeScanner.render(onScanSuccess, onScanError);
-    //setScannerState(html5QrcodeScanner.getState());
-    //console.log(html5QrcodeScanner.getState());
-
+    html5QrcodeScanner.render(onScanSuccess, onScanError);
+ 
 
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -68,7 +38,7 @@ export default function App(){
     var dateTime = date+' '+time;
           
     function onScanSuccess(decodedText, decodedResult) {
-        // Handle on success condition with the decoded text or result.
+
         console.log(`Scan result: ${decodedText}`, decodedResult);
         setScanResult(decodedText);
         setScanTime(dateTime);
@@ -79,9 +49,7 @@ export default function App(){
             return [... currentQRs, {id: crypto.randomUUID(), title: decodedText, completed: false}, ]
           })
         }
-        // ...
         html5QrcodeScanner.clear();
-        // ^ this will stop the scanner (video feed) and clear the scan area.
     }
 
     function onScanError(err){
@@ -94,25 +62,6 @@ export default function App(){
         e.preventDefault()
     }
 
-    function handleSubmitQRList(e) {
-      e.preventDefault()
-      if (newQR != ""){
-        setQRs((currentQRs) => {
-          return [... currentQRs, {id: crypto.randomUUID(), title: newQR, completed: false}, ]
-        })
-      }
-  }
-
-  function toggleQR(id, completed){
-    setQRs(currentQRs => {
-      return currentQRs.map(QR => {
-        if(QR.id === id) {
-          return { ...QR, completed}
-        }
-        return QR
-      })
-    })
-  }
 
   function deleteQR(id){
     setQRs(currentQRs => {
@@ -213,19 +162,7 @@ export default function App(){
                 <button onClick={() => readTag()} className="btn">READ</button>
                 <pre className="log" id="log"></pre>
             </div>
-            <div className="form-row">
-              <label>READ QR CODE</label>
-              <Html5QrcodePlugin
-                    fps={10}
-                    qrbox={250}
-                    disableFlip={false}
-                    qrCodeSuccessCallback={onNewScanResult}
-                />
-              <ResultContainerPlugin results={decodedResults} />
-              <pre className="log" id="logQR"></pre>
-              <button onClick={() => writeTag(scanResult)} className="btn">WRITE QR TO NFC</button>
-              <pre className="log" id="logWrite"></pre>
-            </div>
+            <QrCodeScanner />     
         </form>
         <h1 className="header">SCANNED QR CODES</h1>
         <ul className="list">
