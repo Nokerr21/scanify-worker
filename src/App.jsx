@@ -12,10 +12,16 @@ export default function App(){
   const [scanTime, setScanTime] = useState("")
   const [scannerState, setScannerState] = useState("")
   const [newQR, setNewQR] = useState("")
-  const [QRs, setQRs] = useState([])
+  const [QRs, setQRs] = useState(() => {
+    const localValue = localStorage.getItem("QRs")
+    if (localValue == null) return []
+    return JSON.parse(localValue)
+  })
 
   
-  
+  useEffect(() =>{
+    localStorage.setItem("QRs", JSON.stringify(QRs))
+  }, [QRs])
   
 
   useEffect(() => {
