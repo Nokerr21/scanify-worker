@@ -1,6 +1,8 @@
 import "./styles.css"
 import { useEffect, useState } from "react"
 import { Html5QrcodeScanner, Html5Qrcode } from "html5-qrcode"
+import Html5QrcodePlugin from './Html5QrcodePlugin.jsx';
+import ResultContainerPlugin from './ResultContainerPlugin.jsx';
 
 
 
@@ -19,6 +21,20 @@ export default function App(){
   })
 
   
+  const [decodedResults, setDecodedResults] = useState([]);
+  const onNewScanResult = (decodedText, decodedResult) => {
+      console.log("App [result]", decodedResult);
+      setDecodedResults(prev => [...prev, decodedResult]);
+      if (decodedText != ""){
+        setQRs((currentQRs) => {
+          return [... currentQRs, {id: crypto.randomUUID(), title: decodedText, completed: false}, ]
+        })
+      }
+  };
+
+
+
+  
   useEffect(() =>{
     localStorage.setItem("QRs", JSON.stringify(QRs))
   }, [QRs])
@@ -32,11 +48,8 @@ export default function App(){
         
      // }
     //})
-    const html5QrcodeScanner = new Html5QrcodeScanner(
-      "readerQR", { fps: 5, qrbox: 250, useBarCodeDetectorIfSupported: true,
-        willReadFrequently: true,
-        showZoomSliderIfSupported: true,
-        defaultZoomValueIfSupported: 5 });
+   // const html5QrcodeScanner = new Html5QrcodeScanner(
+    //  "readerQR", { fps: 5, qrbox: 250 });
     //console.log(html5QrcodeScanner.getState());
 
     
@@ -44,7 +57,7 @@ export default function App(){
    // if (html5QrcodeScanner.getState() == "NOT_STARTED"){
    //   html5QrcodeScanner.render(onScanSuccess, onScanError);
     //}
-    html5QrcodeScanner.render(onScanSuccess, onScanError);
+   // html5QrcodeScanner.render(onScanSuccess, onScanError);
     //setScannerState(html5QrcodeScanner.getState());
     //console.log(html5QrcodeScanner.getState());
 
@@ -202,7 +215,13 @@ export default function App(){
             </div>
             <div className="form-row">
               <label>READ QR CODE</label>
-              <div id="readerQR"></div>
+              <Html5QrcodePlugin
+                    fps={10}
+                    qrbox={250}
+                    disableFlip={false}
+                    qrCodeSuccessCallback={onNewScanResult}
+                />
+              <ResultContainerPlugin results={decodedResults} />
               <pre className="log" id="logQR"></pre>
               <button onClick={() => writeTag(scanResult)} className="btn">WRITE QR TO NFC</button>
               <pre className="log" id="logWrite"></pre>
