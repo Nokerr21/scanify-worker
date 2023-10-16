@@ -30,7 +30,7 @@ export default function App(){
       "readerQR", { fps: 5, qrbox: 250 });
 
     html5QrcodeScanner.render(onScanSuccess, onScanError);
- 
+    console.log(html5QrcodeScanner.getState()  + " drugi");
 
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -38,7 +38,6 @@ export default function App(){
     var dateTime = date+' '+time;
           
     function onScanSuccess(decodedText, decodedResult) {
-
         console.log(`Scan result: ${decodedText}`, decodedResult);
         setScanResult(decodedText);
         setScanTime(dateTime);
@@ -49,11 +48,11 @@ export default function App(){
             return [... currentQRs, {id: crypto.randomUUID(), title: decodedText, completed: false}, ]
           })
         }
+        console.log(html5QrcodeScanner.getState()  + " trzeci");
         html5QrcodeScanner.clear();
     }
 
     function onScanError(err){
-      console.warn(err)
     }
   }, [scanTime])
 
@@ -62,6 +61,25 @@ export default function App(){
         e.preventDefault()
     }
 
+    function handleSubmitQRList(e) {
+      e.preventDefault()
+      if (newQR != ""){
+        setQRs((currentQRs) => {
+          return [... currentQRs, {id: crypto.randomUUID(), title: newQR, completed: false}, ]
+        })
+      }
+  }
+
+  function toggleQR(id, completed){
+    setQRs(currentQRs => {
+      return currentQRs.map(QR => {
+        if(QR.id === id) {
+          return { ...QR, completed}
+        }
+        return QR
+      })
+    })
+  }
 
   function deleteQR(id){
     setQRs(currentQRs => {
@@ -162,7 +180,13 @@ export default function App(){
                 <button onClick={() => readTag()} className="btn">READ</button>
                 <pre className="log" id="log"></pre>
             </div>
-            <QrCodeScanner />     
+            <div className="form-row">
+              <label>READ QR CODE</label>
+              <div id="readerQR"></div>
+              <pre className="log" id="logQR"></pre>
+              <button onClick={() => writeTag(scanResult)} className="btn">WRITE QR TO NFC</button>
+              <pre className="log" id="logWrite"></pre>
+            </div>
         </form>
         <h1 className="header">SCANNED QR CODES</h1>
         <ul className="list">
