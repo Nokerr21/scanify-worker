@@ -61,7 +61,7 @@ TimeStamp: `+B),C(ae),console.log(ae.getBytes),ae!=""&&m(le=>[...le,{id:crypto.r
 `+q.decode(ae.data)+`
 TimeStamp: `+H)}}}catch(b){j(b)}}else j("Web NFC is not supported.")}async function z(v){if("NDEFReader"in window){const H=new NDEFReader;D((Ee=>new Blob([Ee]).size)(v));try{await H.write(v);var b=new Date,q=b.getFullYear()+"-"+(b.getMonth()+1)+"-"+b.getDate(),W=b.getHours()+":"+b.getMinutes()+":"+b.getSeconds()+":"+b.getMilliseconds(),B=q+" "+W,K=Y();se("Message: '"+v+`' written!
 TimeStamp: `+B+`
-Index: `+K),n("")}catch(Ee){se(Ee.code),Ee.name=="NetworkError"&&D(Ee.message),n("")}}else se("Web NFC is not supported.")}function Y(){const v="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";var q="";for(let W=0;W<10;W++){let B=Math.floor(Math.random()*v.length);q+=v.substring(B,B+1)}return q}function j(v){var b=document.getElementById("log");b.innerHTML="",b.innerHTML+=v+`
+Index: `+K),n("")}catch(Ee){se(Ee),Ee.name=="NetworkError"&&D(Ee.message),n("")}}else se("Web NFC is not supported.")}async function Y(){const v="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";var q="";for(let W=0;W<10;W++){let B=Math.floor(Math.random()*v.length);q+=v.substring(B,B+1)}return q}function j(v){var b=document.getElementById("log");b.innerHTML="",b.innerHTML+=v+`
 `}function se(v){var b=document.getElementById("logWrite");b.innerHTML="",b.innerHTML+=v+`
 `}function D(v){var b=document.getElementById("logWriteTest");b.innerHTML="",b.innerHTML+=v+`
 `}function _(v){var b=document.getElementById("logQR");b.innerHTML="",b.innerHTML+=v+`
