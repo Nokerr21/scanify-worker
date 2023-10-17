@@ -137,12 +137,8 @@ export default function App(){
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
             var dateTime = date+' '+time;
-            var index = ""
-            for (let iter = 0; iter < indexLength; iter++) {
-              let randNum = Math.floor(Math.random() * digits.length);
-              index += digits.substring(randNum, randNum + 1);
-            }
-            consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
+           
+            consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime);
             setMessage("")
           } catch(error) {
             consoleLogWrite(error);
