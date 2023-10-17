@@ -139,8 +139,8 @@ export default function App(){
             setMessage("")
           } catch(error) {
             consoleLog(error.response.data.message);
-            if(error == null){
-              consoleLog("to ten blad")
+            if(error.name == 'NetworkError'){
+              consoleLog(error)
             }
             setMessage("")
           }
