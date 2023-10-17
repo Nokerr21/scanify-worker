@@ -19,6 +19,9 @@ export default function App(){
     return JSON.parse(localValue)
   })
 
+  const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+  const indexLength = 10
+
   
   useEffect(() =>{
     localStorage.setItem("QRs", JSON.stringify(QRs))
@@ -134,8 +137,6 @@ export default function App(){
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
             var dateTime = date+' '+time;
-            const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-            const indexLength = 10
             var index = ""
             for (let iter = 0; iter < indexLength; iter++) {
               let randNum = Math.floor(Math.random() * digits.length);
@@ -156,16 +157,16 @@ export default function App(){
         }
       }
 
-      async function generateIndex(){
-        const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-        const indexLength = 10
-        var index = ""
-        for (let iter = 0; iter < indexLength; iter++) {
-          let randNum = Math.floor(Math.random() * digits.length);
-          index += digits.substring(randNum, randNum + 1);
-        }
-        return index
-      }
+      //async function generateIndex(){
+       // const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+       // const indexLength = 10
+       // var index = ""
+        //for (let iter = 0; iter < indexLength; iter++) {
+         // let randNum = Math.floor(Math.random() * digits.length);
+         // index += digits.substring(randNum, randNum + 1);
+       // }
+       // return index
+      //}
       
       function consoleLog(data) {
         var logElement = document.getElementById('log');
