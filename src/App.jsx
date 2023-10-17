@@ -115,10 +115,7 @@ export default function App(){
               }
             }
           } catch(error) {
-            consoleLog(error.response.data.message)
-            if(error == null){
-              consoleLog("to ten blad")
-            }
+            consoleLog(error);
           }
         } else {
           consoleLog("Web NFC is not supported.");
@@ -141,7 +138,10 @@ export default function App(){
             consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime);
             setMessage("")
           } catch(error) {
-            consoleLogWrite(error);
+            consoleLog(error.response.data.message);
+            if(error == null){
+              consoleLog("to ten blad")
+            }
             setMessage("")
           }
         } else {
