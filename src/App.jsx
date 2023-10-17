@@ -111,7 +111,6 @@ export default function App(){
                 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
                 var dateTime = date+' '+time;
                 consoleLog("---- data ----\n" + decoder.decode(record.data) + "\n" + "TimeStamp: " + dateTime);
-                
               }
             }
           } catch(error) {
@@ -135,7 +134,8 @@ export default function App(){
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
             var dateTime = date+' '+time;
-            consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime);
+            var index = generateIndex()
+            consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
             setMessage("")
           } catch(error) {
             consoleLogWrite(error.code);
@@ -147,6 +147,17 @@ export default function App(){
         } else {
           consoleLogWrite("Web NFC is not supported.");
         }
+      }
+
+      function generateIndex(){
+        const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+        const indexLength = 10
+        index = ""
+        for (let iter = 0; iter < indexLength; iter++) {
+          let randNum = Math.floor(Math.random() * digits.length);
+          index += digits.substring(randNum, randNum + 1);
+        }
+        return index
       }
       
       function consoleLog(data) {
