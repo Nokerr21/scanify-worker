@@ -152,7 +152,7 @@ export default function App(){
       function generateIndex(){
         const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
         const indexLength = 10
-        index = ""
+        var index = ""
         for (let iter = 0; iter < indexLength; iter++) {
           let randNum = Math.floor(Math.random() * digits.length);
           index += digits.substring(randNum, randNum + 1);
