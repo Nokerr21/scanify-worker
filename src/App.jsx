@@ -132,6 +132,7 @@ export default function App(){
           const byteSize = str => new Blob([str]).size;
           consoleLogWriteTest(byteSize(message))
           try {
+            for (let i = 0; i< 10; i++){
             await ndef.write(message);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -144,6 +145,8 @@ export default function App(){
             }
             consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
             setMessage("")
+          }
+            
           } catch(error) {
             consoleLogWrite(error);
             //consoleLogWrite(error.code);
