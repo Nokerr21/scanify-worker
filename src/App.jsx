@@ -116,7 +116,7 @@ export default function App(){
             }
           } catch(error) {
             consoleLog(error);
-            if(error === null){
+            if(error == null){
               consoleLog("to ten blad")
             }
           }
