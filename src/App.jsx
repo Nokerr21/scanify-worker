@@ -116,6 +116,7 @@ export default function App(){
             }
           } catch(error) {
             consoleLog(error);
+            console.log(error);
           }
         } else {
           consoleLog("Web NFC is not supported.");
