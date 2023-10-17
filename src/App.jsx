@@ -228,7 +228,7 @@ export default function App(){
         <div className="classic-row">
           <h1 className="header">SCANNED QR CODES</h1>
           <label>
-            <input type="checkbox" />
+            <input type="checkbox" id="serialCheck"/>
             SERIAL WRITING
           </label>
           <ul className="list">
