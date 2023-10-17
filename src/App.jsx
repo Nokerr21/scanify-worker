@@ -136,13 +136,13 @@ export default function App(){
               let randNum = Math.floor(Math.random() * digits.length);
               index += digits.substring(randNum, randNum + 1);
             }
-            
-            var checkBox = document.getElementById("serialCheck");
+            var checkBox = document.getElementById("batchCheck");
             if (checkBox.checked == true){
-              consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
+              consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
             }
             else{
-              consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Serial: " + index);
+              
+              consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
             }
             
             
@@ -228,7 +228,7 @@ export default function App(){
         <div className="classic-row">
           <h1 className="header">SCANNED QR CODES</h1>
           <label>
-            <input type="checkbox" id="serialCheck"/>
+            <input type="checkbox" id="batchCheck"/>
             SERIAL WRITING
           </label>
           <ul className="list">
