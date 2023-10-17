@@ -24,6 +24,14 @@
     text-align: left;
     text-indent: 0.2rem;
   }
+
+  .classic-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+    text-indent: 0rem;
+  }
   
   .btn {
     background: hsl(200, 100%, 50%, 0.1);

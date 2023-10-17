@@ -97,13 +97,7 @@ export default function App(){
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
           try {
-            //const ctrl = new AbortController();
-            //ctrl.signal.onabort = event => {
-            //};
             await ndef.scan();
-            //document.querySelector("cancel").onClick = event => {
-            //  ctrl.abort();
-            //}
             ndef.onreading = event => {
               const decoder = new TextDecoder();
               for (const record of event.message.records) {
@@ -132,7 +126,6 @@ export default function App(){
           const byteSize = str => new Blob([str]).size;
           consoleLogWriteTest(byteSize(message))
           try {
-            for (let i = 0; i< 10; i++){
             await ndef.write(message);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -143,9 +136,18 @@ export default function App(){
               let randNum = Math.floor(Math.random() * digits.length);
               index += digits.substring(randNum, randNum + 1);
             }
-            consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
+            
+            var checkBox = document.getElementById("serialCheck");
+            if (checkBox.checked == true){
+              consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
+            }
+            else{
+              consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Serial: " + index);
+            }
+            
+            
             setMessage("")
-          }
+          
             
           } catch(error) {
             consoleLogWrite(error);
@@ -223,22 +225,28 @@ export default function App(){
               <pre className="log" id="logWrite"></pre>
             </div>
         </form>
-        <h1 className="header">SCANNED QR CODES</h1>
-        <ul className="list">
-          {QRs.length === 0 && "No QR codes stored"}
-          {QRs.map(QR => {
-            return (
-            <li key={QR.id}>
-              <pre className="litem">
-                {QR.title}
-              </pre>
-              <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-              <button onClick={() => writeTag(QR.title)} className="btn">WRITE TO NFC</button>
-            </li>
-            )
-          })}
+        <div className="classic-row">
+          <h1 className="header">SCANNED QR CODES</h1>
+          <label>
+            <input type="checkbox" />
+            SERIAL WRITING
+          </label>
+          <ul className="list">
+            {QRs.length === 0 && "No QR codes stored"}
+            {QRs.map(QR => {
+              return (
+              <li key={QR.id}>
+                <pre className="litem">
+                  {QR.title}
+                </pre>
+                <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
+                <button onClick={() => writeTag(QR.title)} className="btn">WRITE TO NFC</button>
+              </li>
+              )
+            })}
           
-        </ul>
+          </ul>
+        </div>
         </>
     )
 }
