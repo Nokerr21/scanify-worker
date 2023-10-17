@@ -140,7 +140,7 @@ export default function App(){
           } catch(error) {
             consoleLogWrite(error.name);
             if(error.name == 'NetworkError'){
-              consoleLogWriteTest(error.options)
+              consoleLogWriteTest(error.message)
             }
             setMessage("")
           }
