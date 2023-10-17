@@ -138,7 +138,8 @@ export default function App(){
             consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
             setMessage("")
           } catch(error) {
-            consoleLogWrite(error.code);
+            consoleLogWrite(error);
+            //consoleLogWrite(error.code);
             if(error.name == 'NetworkError'){
               consoleLogWriteTest(error.message)
             }
@@ -149,7 +150,7 @@ export default function App(){
         }
       }
 
-      function generateIndex(){
+      async function generateIndex(){
         const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
         const indexLength = 10
         var index = ""
