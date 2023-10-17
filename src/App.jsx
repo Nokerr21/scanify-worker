@@ -43,6 +43,7 @@ export default function App(){
         setScanTime(dateTime);
         consoleLogQR("Message: '" + decodedText + "' decoded!" + "\n" + "TimeStamp: " + dateTime);
         setNewQR(decodedText);
+        console.log(decodedText.getBytes)
         if (decodedText != ""){
           setQRs((currentQRs) => {
             return [... currentQRs, {id: crypto.randomUUID(), title: decodedText, completed: false}, ]
@@ -128,6 +129,7 @@ export default function App(){
           const ndef = new NDEFReader();
           try {
             await ndef.write(message);
+            console.log(ndef.getBytes())
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -151,6 +153,12 @@ export default function App(){
 
       function consoleLogWrite(data) {
         var logElement = document.getElementById('logWrite');
+        logElement.innerHTML = ""
+        logElement.innerHTML += data + '\n';
+      }
+
+      function consoleLogWriteTest(data) {
+        var logElement = document.getElementById('logWriteTest');
         logElement.innerHTML = ""
         logElement.innerHTML += data + '\n';
       }
@@ -185,6 +193,7 @@ export default function App(){
               <div id="readerQR"></div>
               <pre className="log" id="logQR"></pre>
               <button onClick={() => writeTag(scanResult)} className="btn">WRITE QR TO NFC</button>
+              <pre className="log" id="logWriteTest"></pre>
               <pre className="log" id="logWrite"></pre>
             </div>
         </form>
