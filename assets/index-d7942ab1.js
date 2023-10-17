@@ -60,7 +60,7 @@ Error generating stack: `+d.message+`
 TimeStamp: `+Y),C(z),console.log(z.getBytes),z!=""&&m(Re=>[...Re,{id:crypto.randomUUID(),title:z,completed:!1}]),console.log(T.getState()+" trzeci"),T.clear()}function K(z){}},[f]);function _(T){T.preventDefault()}function v(T){m(N=>N.filter(F=>F.id!==T))}async function L(){if("NDEFReader"in window){const T=new NDEFReader;try{await T.scan(),T.onreading=N=>{const F=new TextDecoder;for(const z of N.message.records){var q=new Date,Y=q.getFullYear()+"-"+(q.getMonth()+1)+"-"+q.getDate(),k=q.getHours()+":"+q.getMinutes()+":"+q.getSeconds()+":"+q.getMilliseconds(),K=Y+" "+k;G(`---- data ----
 `+F.decode(z.data)+`
 TimeStamp: `+K)}}}catch(N){G(N)}}else G("Web NFC is not supported.")}async function j(T){if("NDEFReader"in window){const k=new NDEFReader;se((z=>new Blob([z]).size)(T));try{await k.write(T);var N=new Date,F=N.getFullYear()+"-"+(N.getMonth()+1)+"-"+N.getDate(),q=N.getHours()+":"+N.getMinutes()+":"+N.getSeconds()+":"+N.getMilliseconds(),Y=F+" "+q;H("Message: '"+T+`' written!
-TimeStamp: `+Y),n("")}catch(z){H(z.name),z.name=="NetworkError"&&se(z.message),n("")}}else H("Web NFC is not supported.")}function G(T){var N=document.getElementById("log");N.innerHTML="",N.innerHTML+=T+`
+TimeStamp: `+Y),n("")}catch(z){H(z.code),z.name=="NetworkError"&&se(z.message),n("")}}else H("Web NFC is not supported.")}function G(T){var N=document.getElementById("log");N.innerHTML="",N.innerHTML+=T+`
 `}function H(T){var N=document.getElementById("logWrite");N.innerHTML="",N.innerHTML+=T+`
 `}function se(T){var N=document.getElementById("logWriteTest");N.innerHTML="",N.innerHTML+=T+`
 `}function D(T){var N=document.getElementById("logQR");N.innerHTML="",N.innerHTML+=T+`
