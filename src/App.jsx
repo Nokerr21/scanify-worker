@@ -128,9 +128,9 @@ export default function App(){
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
           const byteSize = str => new Blob([str]).size;
+          consoleLogWriteTest(byteSize(message))
           try {
             await ndef.write(message);
-            consoleLogWriteTest(byteSize(message))
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
