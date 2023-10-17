@@ -138,7 +138,7 @@ export default function App(){
             consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime);
             setMessage("")
           } catch(error) {
-            consoleLog(error.response.data.message);
+            consoleLog(error);
             if(error.name == 'NetworkError'){
               consoleLog(error)
             }
