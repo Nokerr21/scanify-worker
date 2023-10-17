@@ -116,7 +116,9 @@ export default function App(){
             }
           } catch(error) {
             consoleLog(error);
-            console.log(error);
+            if(error === null){
+              consoleLog("to ten blad")
+            }
           }
         } else {
           consoleLog("Web NFC is not supported.");
