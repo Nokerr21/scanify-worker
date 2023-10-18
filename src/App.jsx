@@ -151,9 +151,7 @@ export default function App(){
             var checkBox = document.getElementById("batchCheck");
             if (checkBox.checked == true){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
-              const promise = document.getElementById("writeButtonList").click();
-              promise.then(consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index));
-              
+              document.getElementById("writeButtonList").click();
             }
             else{
               
