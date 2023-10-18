@@ -152,7 +152,7 @@ export default function App(){
             if (checkBox.checked == true){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               const promise = document.getElementById("writeButtonList").click();
-              promise.then(consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index););
+              promise.then(consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index));
               
             }
             else{
