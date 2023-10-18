@@ -21,6 +21,7 @@ export default function App(){
 
   const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
   const indexLength = 10
+  const [batchNumber, setBatchNumber] = useState("")
 
   
   useEffect(() =>{
@@ -93,6 +94,8 @@ export default function App(){
 
 
 
+
+
     async function readTag() {
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
@@ -118,6 +121,15 @@ export default function App(){
         }
       }
 
+
+      function changeBatchNumber(){
+
+        if (checkBox.checked == true){
+          
+        }
+        else{console.log("batch num not chanaged")}
+        
+      }
       
       
       async function writeTag(message) {
@@ -139,6 +151,7 @@ export default function App(){
             var checkBox = document.getElementById("batchCheck");
             if (checkBox.checked == true){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
+              document.getElementById("writeButtonList").click();
             }
             else{
               
@@ -228,7 +241,7 @@ export default function App(){
         <div className="classic-row">
           <h1 className="header">SCANNED QR CODES</h1>
           <label>
-            <input type="checkbox" id="batchCheck"/>
+            <input type="checkbox" id="batchCheck" onClick={() => setBatchNumber(scanResult)}/>
             SERIAL WRITING
           </label>
           <ul className="list">
@@ -240,7 +253,7 @@ export default function App(){
                   {QR.title}
                 </pre>
                 <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-                <button onClick={() => writeTag(QR.title)} className="btn">WRITE TO NFC</button>
+                <button id="writeButtonList" onClick={() => writeTag(QR.title)} className="btn">WRITE TO NFC</button>
               </li>
               )
             })}
