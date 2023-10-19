@@ -130,6 +130,10 @@ export default function App(){
         else{console.log("batch num not chanaged")}
         
       }
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
       
       
       async function writeTag(message) {
@@ -151,6 +155,7 @@ export default function App(){
             var checkBox = document.getElementById("batchCheck");
             if (checkBox.checked == true){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
+              await sleep(500)
               document.getElementById("writeButtonList").click();
             }
             else{
