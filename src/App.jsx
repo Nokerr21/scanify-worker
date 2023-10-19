@@ -142,7 +142,6 @@ export default function App(){
           const byteSize = str => new Blob([str]).size;
           consoleLogWriteTest(byteSize(message))
           try {
-            await ndef.write(message);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -153,9 +152,10 @@ export default function App(){
               index += digits.substring(randNum, randNum + 1);
             }
             var checkBox = document.getElementById("batchCheck");
+            await ndef.write(message);
             if (checkBox.checked == true){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
-              await sleep(500)
+              await sleep(100);
               document.getElementById("writeButtonList").click();
             }
             else{
