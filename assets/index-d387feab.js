@@ -62,7 +62,7 @@ TimeStamp: `+Ae),C(Se),console.log(Se.getBytes),Se!=""&&m(Te=>[...Te,{id:crypto.
 TimeStamp: `+xe)}}}catch(j){M(j)}}else M("Web NFC is not supported.")}function D(R){return new Promise(j=>setTimeout(j,R))}async function N(R){if("NDEFReader"in window){const Se=new NDEFReader;J((Te=>new Blob([Te]).size)(R));try{await Se.write(R);var j=new Date,V=j.getFullYear()+"-"+(j.getMonth()+1)+"-"+j.getDate(),ae=j.getHours()+":"+j.getMinutes()+":"+j.getSeconds()+":"+j.getMilliseconds(),Ae=V+" "+ae,re="";for(let Te=0;Te<T;Te++){let he=Math.floor(Math.random()*v.length);re+=v.substring(he,he+1)}var xe=document.getElementById("batchCheck");xe.checked==!0?(F("Message: '"+R+`' written!
 TimeStamp: `+Ae+`
 Index: `+re+`
-BatchNumber: `+re),await D(1e3),document.getElementById("writeButtonList").click()):F("Message: '"+R+`' written!
+BatchNumber: `+re),await D(1e3),N(R)):F("Message: '"+R+`' written!
 TimeStamp: `+Ae+`
 Index: `+re),n("")}catch(Te){F(Te),Te.name=="NetworkError"&&J(Te.message),n("")}}else F("Web NFC is not supported.")}function M(R){var j=document.getElementById("log");j.innerHTML="",j.innerHTML+=R+`
 `}function F(R){var j=document.getElementById("logWrite");j.innerHTML="",j.innerHTML+=R+`
