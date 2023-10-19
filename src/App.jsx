@@ -8,7 +8,7 @@ import { QrCodeScanner } from "./QrCodeScanner"
 
 
 export default function App(){
-  const [message, setMessage] = useState("")
+  const [mess, setMess] = useState("")
   const [scanResult, setScanResult] = useState("")
   const [scanTime, setScanTime] = useState("")
   const [scannerState, setScannerState] = useState("")
@@ -137,6 +137,7 @@ export default function App(){
       
       
       async function writeTag(message) {
+        setMess(message);
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
           const byteSize = str => new Blob([str]).size;
@@ -156,7 +157,7 @@ export default function App(){
             if (checkBox.checked == true){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               await sleep(1000);
-              writeTag(message);
+              writeTag(mess);
             }
             else{
               
@@ -164,7 +165,7 @@ export default function App(){
             }
             
             
-            setMessage("")
+            setMess("")
           
             
           } catch(error) {
@@ -173,7 +174,7 @@ export default function App(){
             if(error.name == 'NetworkError'){
               consoleLogWriteTest(error.message)
             }
-            setMessage("")
+            setMess("")
           }
         } else {
           consoleLogWrite("Web NFC is not supported.");
