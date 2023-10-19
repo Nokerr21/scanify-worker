@@ -64,7 +64,7 @@ TimeStamp: `+Ae+`
 Index: `+re+`
 BatchNumber: `+re),await D(1e3),N(e)):F("Message: '"+R+`' written!
 TimeStamp: `+Ae+`
-Index: `+re)}catch(Te){F(Te),Te.name=="NetworkError"&&J(Te.message),n("")}}else F("Web NFC is not supported.")}function M(R){var j=document.getElementById("log");j.innerHTML="",j.innerHTML+=R+`
+Index: `+re)}catch(Te){F(Te),Te.name=="NetworkError"&&J(Te.message)}}else F("Web NFC is not supported.")}function M(R){var j=document.getElementById("log");j.innerHTML="",j.innerHTML+=R+`
 `}function F(R){var j=document.getElementById("logWrite");j.innerHTML="",j.innerHTML+=R+`
 `}function J(R){var j=document.getElementById("logWriteTest");j.innerHTML="",j.innerHTML+=R+`
 `}function K(R){var j=document.getElementById("logQR");j.innerHTML="",j.innerHTML+=R+`
