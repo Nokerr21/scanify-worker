@@ -163,18 +163,13 @@ export default function App(){
               
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
             }
-            
-            
-            
-          
-            
+
           } catch(error) {
             consoleLogWrite(error);
             //consoleLogWrite(error.code);
             if(error.name == 'NetworkError'){
               consoleLogWriteTest(error.message)
             }
-            setMess("")
           }
         } else {
           consoleLogWrite("Web NFC is not supported.");
