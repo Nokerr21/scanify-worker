@@ -135,13 +135,12 @@ export default function App(){
         return new Promise(resolve => setTimeout(resolve, ms));
     }
       
-      
+    const ndef = new NDEFReader();
       async function writeTag(message) {
         setMess(message);
         if ("NDEFReader" in window) {
-          const ndef = new NDEFReader();
-          const byteSize = str => new Blob([str]).size;
-          consoleLogWriteTest(byteSize(message))
+        //  const byteSize = str => new Blob([str]).size;
+        //  consoleLogWriteTest(byteSize(message))
           try {
             await ndef.write(mess);
             var today = new Date();
@@ -253,7 +252,7 @@ export default function App(){
                   {QR.title}
                 </pre>
                 <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-                <button id="writeButtonList" onClick={() => writeTag(QR.title)} className="btn">WRITE TO NFC</button>
+                <button id="writeButtonList" onClick={() => {writeTag(QR.title); setMess(QR.title)}} className="btn">WRITE TO NFC</button>
               </li>
               )
             })}
