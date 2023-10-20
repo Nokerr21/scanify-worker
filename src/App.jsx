@@ -166,7 +166,7 @@ export default function App(){
 
           } catch(error) {
             //consoleLogWrite(error);
-            if (times > 0) {
+            if (times > 0 && error.name != 'AbortError') {
               consoleLogWrite(error + "\n"+ "Can't write tag! try " + times + " more times!");
               return await writeTag(message, times - 1);
             }
