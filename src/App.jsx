@@ -143,7 +143,7 @@ export default function App(){
         //  const byteSize = str => new Blob([str]).size;
         //  consoleLogWriteTest(byteSize(message))
           try {
-            await ndef.write(message);
+            await ndef.write(mess);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -156,7 +156,10 @@ export default function App(){
             if (checkBox.checked == true && mess == message){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               await sleep(1000);
-              await writeTag(message);
+              await writeTag(mess);
+            }
+            else if (checkBox.checked == true && mess != message){
+              throw new Error('AbortError');
             }
             else{
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
@@ -170,7 +173,7 @@ export default function App(){
             }
             //consoleLogWrite(error.code);
             else if(error.name == 'AbortError'){
-              return await writeTag(message)
+              return await writeTag(mess)
             }
             else{
               consoleLogWriteTest(error.message)
