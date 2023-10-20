@@ -134,10 +134,8 @@ export default function App(){
       function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-      const controller = new AbortController();
-      const signal = controller.signal;
       
-      async function writeTag(message, times = 2, {signal}) {
+      async function writeTag(message, times = 2) {
         setMess(message);
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
@@ -168,7 +166,7 @@ export default function App(){
             //consoleLogWrite(error);
             if (times > 0) {
               consoleLogWrite(error + "\n"+ "Can't write tag! try " + times + " more times!");
-              return await writeTag(mess, times - 1, {signal});
+              return await writeTag(mess, times - 1);
             }
             //consoleLogWrite(error.code);
             if(error.name == 'NetworkError'){
@@ -215,7 +213,7 @@ export default function App(){
         logElement.innerHTML += data + '\n';
       }
 
-      
+
     
     
     return (
@@ -257,7 +255,7 @@ export default function App(){
                 <pre className="litem">
                   {QR.title}
                 </pre>
-                <button onClick={() => {controller.abort(); deleteQR(QR.id)}} className="btn btn-danger">DELETE</button>
+                <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
                 <button id="writeButtonList" onClick={() => {setMess(QR.title); writeTag(QR.title)}} className="btn">WRITE TO NFC</button>
               </li>
               )
