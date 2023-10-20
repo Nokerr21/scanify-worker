@@ -138,13 +138,13 @@ export default function App(){
       async function writeTag(message, times = 2) {
         var checkBox = document.getElementById("batchCheck");
         console.log(mess);
-        //setMess(message);
+        setMess(message);
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
         //  const byteSize = str => new Blob([str]).size;
         //  consoleLogWriteTest(byteSize(message))
           try {
-            await ndef.write(mess);
+            await ndef.write(message);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -171,7 +171,7 @@ export default function App(){
             }
             //consoleLogWrite(error.code);
             else if(error.name == 'AbortError'){
-              return await writeTag(mess, times - 2)
+              return await writeTag(message, times - 2)
             }
             else{
               consoleLogWriteTest(error.message)
