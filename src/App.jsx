@@ -164,7 +164,9 @@ export default function App(){
 
           } catch(error) {
             consoleLogWrite(error);
-            return await writeTag(mess, times - 1);
+            if (times > 0) {
+              return await writeTag(mess, times - 1);
+            }
             //consoleLogWrite(error.code);
             if(error.name == 'NetworkError'){
               consoleLogWriteTest(error.message)
