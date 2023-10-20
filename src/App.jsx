@@ -257,8 +257,8 @@ export default function App(){
                 <pre className="litem">
                   {QR.title}
                 </pre>
-                <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-                <button id="writeButtonList" onClick={() => {controller.abort(); setMess(QR.title); writeTag(QR.title)}} className="btn">WRITE TO NFC</button>
+                <button onClick={() => {controller.abort(); deleteQR(QR.id)}} className="btn btn-danger">DELETE</button>
+                <button id="writeButtonList" onClick={() => {setMess(QR.title); writeTag(QR.title)}} className="btn">WRITE TO NFC</button>
               </li>
               )
             })}
