@@ -136,7 +136,7 @@ export default function App(){
     }
       
     const ndef = new NDEFReader();
-      async function writeTag(message) {
+      async function writeTag(message, times = 1) {
         setMess(message);
         if ("NDEFReader" in window) {
         //  const byteSize = str => new Blob([str]).size;
@@ -164,7 +164,7 @@ export default function App(){
 
           } catch(error) {
             consoleLogWrite(error);
-            return await writeTag(mess);
+            return await writeTag(mess, times - 1);
             //consoleLogWrite(error.code);
             if(error.name == 'NetworkError'){
               consoleLogWriteTest(error.message)
