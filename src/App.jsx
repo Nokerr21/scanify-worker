@@ -242,6 +242,7 @@ export default function App(){
               <button onClick={() => writeTag(scanResult)} className="btn">WRITE QR TO NFC</button>
               <pre className="log" id="logWriteTest"></pre>
               <pre className="log" id="logWrite"></pre>
+              <button id="writeButtonList" onClick={() => {writeTag(mess)}} className="btn">WRITE TO NFC</button>
             </div>
         </form>
         <div className="classic-row">
@@ -259,7 +260,7 @@ export default function App(){
                   {QR.title}
                 </pre>
                 <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-                <button id="writeButtonList" onClick={() => {setMess(QR.title); writeTag(QR.title)}} className="btn">WRITE TO NFC</button>
+                <button id="writeButtonList" onClick={() => {setMess(QR.title)}} className="btn">WRITE TO NFC</button>
               </li>
               )
             })}
