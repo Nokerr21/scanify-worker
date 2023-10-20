@@ -141,10 +141,6 @@ export default function App(){
         if ("NDEFReader" in window) {
         //  const byteSize = str => new Blob([str]).size;
         //  consoleLogWriteTest(byteSize(message))
-        while(true){
-          var count = 0
-          const maxCount = 3
-        
           try {
             await ndef.write(mess);
             var today = new Date();
@@ -167,15 +163,13 @@ export default function App(){
             }
 
           } catch(error) {
-            if (++count == maxCount){
-              consoleLogWrite(error);
+            consoleLogWrite(error);
+            return await writeTag(mess);
             //consoleLogWrite(error.code);
-              if(error.name == 'NetworkError'){
-                consoleLogWriteTest(error.message)
-              }
+            if(error.name == 'NetworkError'){
+              consoleLogWriteTest(error.message)
             }
           }
-        }
         } else {
           consoleLogWrite("Web NFC is not supported.");
         }
