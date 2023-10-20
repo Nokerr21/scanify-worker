@@ -159,9 +159,6 @@ export default function App(){
               await sleep(1000);
               await writeTag(mess);
             }
-            else if (checkBox.checked == true && mess != message){
-              throw new Error('AbortError');
-            }
             else{
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
             }
