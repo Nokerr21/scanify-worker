@@ -138,13 +138,13 @@ export default function App(){
       async function writeTag(message, times = 2) {
         var checkBox = document.getElementById("batchCheck");
         console.log(mess);
-        setMess(message);
+        //setMess(message);
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
         //  const byteSize = str => new Blob([str]).size;
         //  consoleLogWriteTest(byteSize(message))
           try {
-            await ndef.write(message);
+            await ndef.write(mess);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -156,6 +156,7 @@ export default function App(){
             }
             if (checkBox.checked == true && mess == message){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
+              console.log(mess + "@@@@@@@@@@@@@@@@@@@@@@");
               await sleep(1000);
               await writeTag(mess);
             }
@@ -170,9 +171,10 @@ export default function App(){
               return await writeTag(mess, times - 1);
             }
             //consoleLogWrite(error.code);
-          //  else if(error.name == 'AbortError'){
-           //   return await writeTag(message, times - 2)
-           // }
+            else if(error.name == 'AbortError'){
+              //return await writeTag(message, times - 2)
+              consoleLogWriteTest(error.message)
+            }
             else{
               consoleLogWriteTest(error.message)
             }
