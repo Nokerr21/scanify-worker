@@ -136,7 +136,8 @@ export default function App(){
     }
       
       async function writeTag(message, times = 2) {
-        setMess(message);
+        var checkBox = document.getElementById("batchCheck");
+        //setMess(message);
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
         //  const byteSize = str => new Blob([str]).size;
@@ -152,7 +153,6 @@ export default function App(){
               let randNum = Math.floor(Math.random() * digits.length);
               index += digits.substring(randNum, randNum + 1);
             }
-            var checkBox = document.getElementById("batchCheck");
             if (checkBox.checked == true && mess == message){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               await sleep(1000);
@@ -170,7 +170,7 @@ export default function App(){
             }
             //consoleLogWrite(error.code);
             else if(error.name == 'AbortError'){
-              return await writeTag(message)
+              return await writeTag(mess)
             }
             else{
               consoleLogWriteTest(error.message)
