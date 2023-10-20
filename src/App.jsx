@@ -157,7 +157,7 @@ export default function App(){
             if (checkBox.checked == true){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               console.log(message + "@@@@@@@@@@@@@@@@@@@@@@");
-              await sleep(200);
+              await sleep(1000);
               await writeTag(message);
             }
             else{
