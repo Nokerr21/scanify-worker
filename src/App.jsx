@@ -143,7 +143,7 @@ export default function App(){
           const byteSize = str => new Blob([str]).size;
           consoleLogWriteTest(byteSize(message))
           try {
-            await ndef.write(message);
+            await ndef.write(mess);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -158,7 +158,6 @@ export default function App(){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               await sleep(1000);
               writeTag(mess);
-              return;
             }
             else{
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
@@ -166,6 +165,7 @@ export default function App(){
 
           } catch(error) {
             consoleLogWrite(error);
+            writeTag(mess)
             //consoleLogWrite(error.code);
             if(error.name == 'NetworkError'){
               consoleLogWriteTest(error.message)
