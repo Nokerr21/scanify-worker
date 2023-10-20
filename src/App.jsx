@@ -137,11 +137,12 @@ export default function App(){
       
     const ndef = new NDEFReader();
       async function writeTag(message) {
+        setMess(message);
         if ("NDEFReader" in window) {
         //  const byteSize = str => new Blob([str]).size;
         //  consoleLogWriteTest(byteSize(message))
           try {
-            await ndef.write(message);
+            await ndef.write(mess);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -155,7 +156,7 @@ export default function App(){
             if (checkBox.checked == true && mess == message){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               await sleep(1000);
-              await writeTag(message);
+              await writeTag(mess);
             }
             else{
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
@@ -251,7 +252,7 @@ export default function App(){
                   {QR.title}
                 </pre>
                 <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-                <button id="writeButtonList" onClick={() => {setMess(QR.title); writeTag(mess)}} className="btn">WRITE TO NFC</button>
+                <button id="writeButtonList" onClick={() => {setMess(QR.title); writeTag(QR.title)}} className="btn">WRITE TO NFC</button>
               </li>
               )
             })}
