@@ -135,7 +135,7 @@ export default function App(){
         return new Promise(resolve => setTimeout(resolve, ms));
     }
       
-      async function writeTag(message, times = 1) {
+      async function writeTag(message, times = 2) {
         setMess(message);
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
@@ -163,8 +163,9 @@ export default function App(){
             }
 
           } catch(error) {
-            consoleLogWrite(error);
+            //consoleLogWrite(error);
             if (times > 0) {
+              consoleLogWrite(error + "\n"+ "Can't write tag! try " + times + 1 + " more times!");
               return await writeTag(mess, times - 1);
             }
             //consoleLogWrite(error.code);
