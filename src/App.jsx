@@ -154,7 +154,7 @@ export default function App(){
               let randNum = Math.floor(Math.random() * digits.length);
               index += digits.substring(randNum, randNum + 1);
             }
-            if (checkBox.checked == true && mess == message){
+            if (checkBox.checked == true){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               console.log(message + "@@@@@@@@@@@@@@@@@@@@@@");
               await sleep(1000);
