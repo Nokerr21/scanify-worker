@@ -165,14 +165,14 @@ export default function App(){
 
           } catch(error) {
             //consoleLogWrite(error);
-            if (times > 0 && error.name != 'AbortError') {
+            if (times > 0) {
               consoleLogWrite(error + "\n"+ "Can't write tag! try " + times + " more times!");
               return await writeTag(mess, times - 1);
             }
             //consoleLogWrite(error.code);
-            else if(error.name == 'AbortError'){
-              return await writeTag(message, times - 2)
-            }
+          //  else if(error.name == 'AbortError'){
+           //   return await writeTag(message, times - 2)
+           // }
             else{
               consoleLogWriteTest(error.message)
             }
