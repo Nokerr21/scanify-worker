@@ -158,9 +158,9 @@ export default function App(){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               await sleep(1000);
               writeTag(mess);
+              return;
             }
             else{
-              
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
             }
 
