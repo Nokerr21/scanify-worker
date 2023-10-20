@@ -154,7 +154,7 @@ export default function App(){
               index += digits.substring(randNum, randNum + 1);
             }
             var checkBox = document.getElementById("batchCheck");
-            if (checkBox.checked == true){
+            if (checkBox.checked == true && mess == message){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               await sleep(1000);
               writeTag(mess);
@@ -165,7 +165,6 @@ export default function App(){
 
           } catch(error) {
             consoleLogWrite(error);
-            writeTag(mess)
             //consoleLogWrite(error.code);
             if(error.name == 'NetworkError'){
               consoleLogWriteTest(error.message)
