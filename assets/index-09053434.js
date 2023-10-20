@@ -65,7 +65,7 @@ Index: `+ye+`
 BatchNumber: `+ye),console.log(R+"@@@@@@@@@@@@@@@@@@@@@@"),await D(1e3),await N(R)):F("Message: '"+R+`' written!
 TimeStamp: `+xe+`
 Index: `+ye)}catch(Te){if(H>0&&Te.name!="AbortError")return F(Te+`
-Can't write tag! try `+H+" more times!"),await N(R,H-1);Te.name=="AbortError"?(J(Te.message),alert("AbortError occured!")):J(Te.message)}}else F("Web NFC is not supported.")}function M(R){var H=document.getElementById("log");H.innerHTML="",H.innerHTML+=R+`
+Can't write tag! try `+H+" more times!"),await N(R,H-1);Te.name=="AbortError",J(Te.message)}}else F("Web NFC is not supported.")}function M(R){var H=document.getElementById("log");H.innerHTML="",H.innerHTML+=R+`
 `}function F(R){var H=document.getElementById("logWrite");H.innerHTML="",H.innerHTML+=R+`
 `}function J(R){var H=document.getElementById("logWriteTest");H.innerHTML="",H.innerHTML+=R+`
 `}function K(R){var H=document.getElementById("logQR");H.innerHTML="",H.innerHTML+=R+`
