@@ -135,10 +135,10 @@ export default function App(){
         return new Promise(resolve => setTimeout(resolve, ms));
     }
       
-    const ndef = new NDEFReader();
       async function writeTag(message, times = 1) {
         setMess(message);
         if ("NDEFReader" in window) {
+          const ndef = new NDEFReader();
         //  const byteSize = str => new Blob([str]).size;
         //  consoleLogWriteTest(byteSize(message))
           try {
