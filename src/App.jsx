@@ -143,7 +143,7 @@ export default function App(){
         //  const byteSize = str => new Blob([str]).size;
         //  consoleLogWriteTest(byteSize(message))
           try {
-            await ndef.write(mess);
+            await ndef.write(message);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -156,7 +156,7 @@ export default function App(){
             if (checkBox.checked == true && mess == message){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
               await sleep(1000);
-              await writeTag(mess);
+              await writeTag(message);
             }
             else{
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
@@ -166,11 +166,11 @@ export default function App(){
             //consoleLogWrite(error);
             if (times > 0 && error.name != 'AbortError') {
               consoleLogWrite(error + "\n"+ "Can't write tag! try " + times + " more times!");
-              return await writeTag(mess, times - 1);
+              return await writeTag(message, times - 1);
             }
             //consoleLogWrite(error.code);
             else if(error.name == 'AbortError'){
-              return await writeTag(mess)
+              return await writeTag(message)
             }
             else{
               consoleLogWriteTest(error.message)
