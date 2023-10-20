@@ -170,7 +170,7 @@ export default function App(){
             }
             //consoleLogWrite(error.code);
             else if(error.name == 'AbortError'){
-              return await writeTag(mess)
+              return await writeTag(message)
             }
             else{
               consoleLogWriteTest(error.message)
