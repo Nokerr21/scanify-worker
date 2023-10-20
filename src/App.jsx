@@ -174,7 +174,6 @@ export default function App(){
             else if(error.name == 'AbortError'){
               //return await writeTag(message, times - 2)
               consoleLogWriteTest(error.message)
-              alert("AbortError occured!")
             }
             else{
               consoleLogWriteTest(error.message)
