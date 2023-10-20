@@ -137,7 +137,7 @@ export default function App(){
       
       async function writeTag(message, times = 2) {
         var checkBox = document.getElementById("batchCheck");
-        setMess(message);
+        //setMess(message);
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
         //  const byteSize = str => new Blob([str]).size;
