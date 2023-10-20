@@ -169,7 +169,10 @@ export default function App(){
               return await writeTag(mess, times - 1);
             }
             //consoleLogWrite(error.code);
-            if(error.name == 'NetworkError'){
+            else if(error.name == 'AbortError'){
+              return await writeTag(mess)
+            }
+            else{
               consoleLogWriteTest(error.message)
             }
           }
