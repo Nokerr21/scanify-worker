@@ -9,6 +9,7 @@ import { QrCodeScanner } from "./QrCodeScanner"
 
 export default function App(){
   const [mess, setMess] = useState("")
+  const [messUpdated, setMessUpdated] = useState("")
   const [scanResult, setScanResult] = useState("")
   const [scanTime, setScanTime] = useState("")
   const [scannerState, setScannerState] = useState("")
@@ -134,17 +135,21 @@ export default function App(){
       function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+
+    useEffect(() =>{
+      setMessUpdated(mess)
+    }, [mess])
       
       async function writeTag(message, times = 2) {
         var checkBox = document.getElementById("batchCheck");
-        console.log(mess);
+        console.log(messUpdated);
         //setMess(message);
         if ("NDEFReader" in window) {
           const ndef = new NDEFReader();
         //  const byteSize = str => new Blob([str]).size;
         //  consoleLogWriteTest(byteSize(message))
           try {
-            await ndef.write(mess);
+            await ndef.write(messUpdated);
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -154,11 +159,11 @@ export default function App(){
               let randNum = Math.floor(Math.random() * digits.length);
               index += digits.substring(randNum, randNum + 1);
             }
-            if (checkBox.checked == true && mess == message){
+            if (checkBox.checked == true && messUpdated == message){
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
-              console.log(mess + "@@@@@@@@@@@@@@@@@@@@@@");
+              console.log(messUpdated + "@@@@@@@@@@@@@@@@@@@@@@");
               await sleep(1000);
-              await writeTag(mess);
+              await writeTag(messUpdated);
             }
             else{
               consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
@@ -168,7 +173,7 @@ export default function App(){
             //consoleLogWrite(error);
             if (times > 0) {
               consoleLogWrite(error + "\n"+ "Can't write tag! try " + times + " more times!");
-              return await writeTag(mess, times - 1);
+              return await writeTag(messUpdated, times - 1);
             }
             //consoleLogWrite(error.code);
             else if(error.name == 'AbortError'){
