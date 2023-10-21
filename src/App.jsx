@@ -285,7 +285,7 @@ export default function App(){
                   {QR.title}
                 </pre>
                 <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-                <button id="writeButtonList" onClick={() => {consoleLogListMess(QR.title); setMess(QR.title); writeTag(QR.title); disableButtons()}} className="btn">WRITE TO NFC</button>
+                <button id="writeButtonList" onClick={() => {consoleLogListMess(QR.title); writeTag(QR.title); disableButtons()}} className="btn">WRITE TO NFC</button>
               </li>
               )
             })}
