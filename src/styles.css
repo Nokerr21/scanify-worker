@@ -48,6 +48,13 @@
   .btn:focus-visible {
     background: hsl(200, 100%, 50%, 0.2);
   }
+
+  .btn:disabled{
+    background: hsl(0, 0%, 85%, 0.1);
+    border: 1px solid hsl(0, 0%, 55%);
+    color: hsl(0, 0%, 55%);
+    cursor: not-allowed;
+  }
   
   .btn.btn-danger {
     background: hsl(0, 100%, 40%, 0.1);

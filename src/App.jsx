@@ -132,13 +132,18 @@ export default function App(){
       }
 
       function disableButtons(){
-        var button = document.getElementById('writeButtonList');
-        button.disabled = true;
+        var buttons = document.querySelectorAll('ul.list button.btn')
+        var checkBox = document.getElementById("batchCheck");
+        
+        if(checkBox.checked == true) {
+          buttons.forEach((button) => {button.disabled = true;});
+          //buttons.disabled = true;
+        }
       }
 
       function enableButtons(){
-        var button = document.getElementById('writeButtonList');
-        button.disabled = false;
+        var buttons = document.querySelectorAll('ul.list button.btn')
+        buttons.forEach((button) => {button.disabled = false;});
       }
 
       function sleep(ms) {
