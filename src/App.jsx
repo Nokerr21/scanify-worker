@@ -12,6 +12,7 @@ export default function App(){
   const [scanTime, setScanTime] = useState("")
   const [scannerState, setScannerState] = useState("")
   const [newQR, setNewQR] = useState("")
+  const [batchNumber, setBatchNumber] = useState(newBatchNumber())
   const [QRs, setQRs] = useState(() => {
     const localValue = localStorage.getItem("QRs")
     if (localValue == null) return []
@@ -20,7 +21,6 @@ export default function App(){
 
   const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
   const indexLength = 10
-  const [batchNumber, setBatchNumber] = useState("")
 
   
   useEffect(() =>{
@@ -121,13 +121,10 @@ export default function App(){
       }
 
 
-      function changeBatchNumber(){
-
-        if (checkBox.checked == true){
-          
-        }
-        else{console.log("batch num not chanaged")}
-        
+      function newBatchNumber(){
+        var today = new Date();
+        var batchNumber = today.getDate().toString() + (today.getMonth()+1).toString() + (today.getYear()-100).toString() + '-' + today.getHours().toString() + today.getMinutes().toString();
+        return batchNumber;
       }
 
       function disableButtons(){
@@ -171,7 +168,7 @@ export default function App(){
               index += digits.substring(randNum, randNum + 1);
             }
             if (checkBox.checked == true){
-              consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index+ "\n" + "BatchNumber: " + index);
+              consoleLogWrite("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber);
               console.log(message + "@@@@@@@@@@@@@@@@@@@@@@");
               await sleep(1000);
               await writeTag(message);
@@ -241,9 +238,19 @@ export default function App(){
         logElement.innerHTML += "Selected QR code: " + data + '\n';
       }
 
-
-    
-    
+      function consoleLogBatchNumber(data) {
+        var logElement = document.getElementById('logBatchNumber');
+        var checkBox = document.getElementById("batchCheck");
+        logElement.innerHTML = ""
+        if(checkBox.checked == true){
+          logElement.innerHTML += "Current Batch Number: " + data + '\n';
+        }
+        else{
+          logElement.innerHTML = ""
+        }
+        
+      }
+      
     return (
         <>
         <form onSubmit={handleSubmit} className="new-item-form">
@@ -272,10 +279,11 @@ export default function App(){
         <div className="classic-row">
           <h1 className="header">SCANNED QR CODES</h1>
           <label>
-            <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(scanResult); enableButtons()}}/>
+            <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); consoleLogBatchNumber(batchNumber)}}/>
             SERIAL WRITING
           </label>
-          <pre className="log" id="logListMess"></pre>
+          <pre className="log-info" id="logListMess"></pre>
+          <pre className="log-info" id="logBatchNumber"></pre>
           <ul className="list">
             {QRs.length === 0 && "No QR codes stored"}
             {QRs.map(QR => {
@@ -285,7 +293,7 @@ export default function App(){
                   {QR.title}
                 </pre>
                 <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-                <button id="writeButtonList" onClick={() => {consoleLogListMess(QR.title); writeTag(QR.title); disableButtons()}} className="btn">WRITE TO NFC</button>
+                <button id="writeButtonList" onClick={() => {consoleLogListMess(QR.title) ; writeTag(QR.title); disableButtons()}} className="btn">WRITE TO NFC</button>
               </li>
               )
             })}

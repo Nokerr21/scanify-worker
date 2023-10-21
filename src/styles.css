@@ -213,3 +213,10 @@
     max-width:400px;
     white-space:pre-wrap;
   }
+
+  .log-info {
+    overflow-wrap: break-word;
+    max-width:400px;
+    white-space:pre-wrap;
+    margin: 0.1rem;
+  }
