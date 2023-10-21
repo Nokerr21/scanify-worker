@@ -131,6 +131,16 @@ export default function App(){
         
       }
 
+      function disableButtons(){
+        var button = document.getElementById('writeButtonList');
+        button.disabled = true;
+      }
+
+      function enableButtons(){
+        var button = document.getElementById('writeButtonList');
+        button.disabled = false;
+      }
+
       function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -250,7 +260,7 @@ export default function App(){
         <div className="classic-row">
           <h1 className="header">SCANNED QR CODES</h1>
           <label>
-            <input type="checkbox" id="batchCheck" onClick={() => setBatchNumber(scanResult)}/>
+            <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(scanResult); enableButtons()}}/>
             SERIAL WRITING
           </label>
           <ul className="list">
@@ -262,7 +272,7 @@ export default function App(){
                   {QR.title}
                 </pre>
                 <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-                <button id="writeButtonList" onClick={() => {setMess(QR.title); writeTag(QR.title)}} className="btn">WRITE TO NFC</button>
+                <button id="writeButtonList" onClick={() => {setMess(QR.title); writeTag(QR.title); disableButtons()}} className="btn">WRITE TO NFC</button>
               </li>
               )
             })}
