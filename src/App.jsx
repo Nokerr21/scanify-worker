@@ -8,7 +8,6 @@ import { QrCodeScanner } from "./QrCodeScanner"
 
 
 export default function App(){
-  const [mess, setMess] = useState("")
   const [scanResult, setScanResult] = useState("")
   const [scanTime, setScanTime] = useState("")
   const [scannerState, setScannerState] = useState("")
@@ -134,16 +133,18 @@ export default function App(){
       function disableButtons(){
         var buttons = document.querySelectorAll('ul.list button.btn')
         var checkBox = document.getElementById("batchCheck");
-        
+        var buttonInDiv = document.getElementById("btn-write");
         if(checkBox.checked == true) {
           buttons.forEach((button) => {button.disabled = true;});
-          //buttons.disabled = true;
+          buttonInDiv.disabled = true;
         }
       }
 
       function enableButtons(){
         var buttons = document.querySelectorAll('ul.list button.btn')
+        var buttonInDiv = document.getElementById("btn-write");
         buttons.forEach((button) => {button.disabled = false;});
+        buttonInDiv.disabled = false;
       }
 
       function sleep(ms) {
@@ -234,6 +235,12 @@ export default function App(){
         logElement.innerHTML += data + '\n';
       }
 
+      function consoleLogListMess(data) {
+        var logElement = document.getElementById('logListMess');
+        logElement.innerHTML = ""
+        logElement.innerHTML += "Selected QR code: " + data + '\n';
+      }
+
 
     
     
@@ -257,7 +264,7 @@ export default function App(){
               <label>READ QR CODE</label>
               <div id="readerQR"></div>
               <pre className="log" id="logQR"></pre>
-              <button onClick={() => writeTag(scanResult)} className="btn">WRITE QR TO NFC</button>
+              <button onClick={() => writeTag(scanResult)} className="btn" id="btn-write">WRITE QR TO NFC</button>
               <pre className="log" id="logWriteTest"></pre>
               <pre className="log" id="logWrite"></pre>
             </div>
@@ -268,6 +275,7 @@ export default function App(){
             <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(scanResult); enableButtons()}}/>
             SERIAL WRITING
           </label>
+          <pre className="log" id="logListMess"></pre>
           <ul className="list">
             {QRs.length === 0 && "No QR codes stored"}
             {QRs.map(QR => {
@@ -277,7 +285,7 @@ export default function App(){
                   {QR.title}
                 </pre>
                 <button onClick={() => deleteQR(QR.id)} className="btn btn-danger">DELETE</button>
-                <button id="writeButtonList" onClick={() => {setMess(QR.title); writeTag(QR.title); disableButtons()}} className="btn">WRITE TO NFC</button>
+                <button id="writeButtonList" onClick={() => {consoleLogListMess(QR.title); setMess(QR.title); writeTag(QR.title); disableButtons()}} className="btn">WRITE TO NFC</button>
               </li>
               )
             })}
