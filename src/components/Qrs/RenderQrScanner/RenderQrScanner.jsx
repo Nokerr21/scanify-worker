@@ -1,7 +1,7 @@
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { logQrScanRes } from "./LogQrScanRes";
 
-export function renderQrScanner( setQrs, setScanResult, setScanTime ){
+export function renderQrScanner( setQrs, setQrScanResult, setQrScanTime ){
     const html5QrcodeScanner = new Html5QrcodeScanner("readerQR", { fps: 5, qrbox: 250 });
   
     html5QrcodeScanner.render(onScanSuccess, onScanError);
@@ -14,8 +14,8 @@ export function renderQrScanner( setQrs, setScanResult, setScanTime ){
             
     function onScanSuccess(decodedText, decodedResult) {
         console.log(`Scan result: ${decodedText}`, decodedResult);
-        setScanResult(decodedText);
-        setScanTime(dateTime);
+        setQrScanResult(decodedText);
+        setQrScanTime(dateTime);
         logQrScanRes("Message: '" + decodedText + "' decoded!" + "\n" + "TimeStamp: " + dateTime);
         console.log(decodedText.getBytes)
         if (decodedText != ""){

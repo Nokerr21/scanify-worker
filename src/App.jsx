@@ -11,8 +11,8 @@ import { newBatchNumber } from "./components/BatchNumber/NewBatchNumber";
 
 export default function App(){
 
-  const [scanResult, setScanResult] = useState("")
-  const [scanTime, setScanTime] = useState("")
+  const [QrScanResult, setQrScanResult] = useState("")
+  const [QrScanTime, setQrScanTime] = useState("")
   const [batchNumber, setBatchNumber] = useState(newBatchNumber())
   const [QRs, setQRs] = useState(() => {
     const localValue = localStorage.getItem("QRs")
@@ -27,8 +27,8 @@ export default function App(){
   
 
   useEffect(() => {
-    renderQrScanner(setQRs, setScanResult, setScanTime)
-  }, [scanTime])
+    renderQrScanner(setQRs, setQrScanResult, setQrScanTime)
+  }, [QrScanTime])
 
 
   function handleSubmit(e) {
@@ -43,7 +43,7 @@ export default function App(){
       <ReadTagComponent />   
       <div className="form-div">
         <QrScannerComponent />
-        <WriteTagComponent QrscanResult={scanResult} />
+        <WriteTagComponent QrScanResult={QrScanResult} />
       </div>
     </form>
     <QrListComponent qrs={QRs} setQrs={setQRs} setBatchNumber={setBatchNumber} batchNumber={batchNumber} />
