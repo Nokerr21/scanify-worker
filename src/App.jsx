@@ -43,7 +43,7 @@ export default function App(){
       <ReadTagComponent />   
       <div className="form-div">
         <QrScannerComponent />
-        <WriteTagComponent scanResult={scanResult} />
+        <WriteTagComponent QrscanResult={scanResult} />
       </div>
     </form>
     <QrListComponent qrs={QRs} setQrs={setQRs} setBatchNumber={setBatchNumber} batchNumber={batchNumber} />
