@@ -66,6 +66,13 @@
   .btn.btn-danger:focus-visible {
     background: hsl(0, 100%, 40%, 0.2);
   }
+
+  .btn.btn-danger:disabled{
+    background: hsl(0, 0%, 85%, 0.1);
+    border: 1px solid hsl(0, 0%, 55%);
+    color: hsl(0, 0%, 55%);
+    cursor: not-allowed;
+  }
   
   .new-item-form input {
     outline: none;
