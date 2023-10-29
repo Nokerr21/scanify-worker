@@ -5,7 +5,7 @@ import NavComponent from "./components/Nav/NavComponent";
 import { QrListComponent } from "./components/Qrs/QrListComponent";
 import { WriteTagComponent } from "./components/Nfcs/WriteTagComponent";
 import { renderQrScanner } from "./components/Qrs/RenderQrScanner/RenderQrScanner";
-import QrScannerComponent from "./components/Qrs/QrScannerComponent";
+import { QrScannerComponent } from "./components/Qrs/QrScannerComponent";
 import { newBatchNumber } from "./components/BatchNumber/NewBatchNumber";
 
 
