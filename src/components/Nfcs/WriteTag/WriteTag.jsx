@@ -14,7 +14,6 @@ export default async function writeTag(message, batchNumber, times = 2) {
     //  const byteSize = str => new Blob([str]).size;
     //  consoleLogWriteTest(byteSize(message))
     try {
-      await ndef.write(message);
       var today = new Date();
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
@@ -38,7 +37,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
           index: index
         })
         var id = res.data._id.toString();
-        
+        await ndef.write(id);
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
       }
 
