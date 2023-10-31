@@ -26,6 +26,13 @@ export default async function writeTag(message, batchNumber, times = 2) {
         index += digits.substring(randNum, randNum + 1);
       }
       if (checkBox.checked == true){
+        var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
+          info: message,
+          index: index,
+          batchNumber: batchNumber
+        })
+        var id = res.data._id.toString();
+        await ndef.write(id);
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber);
         console.log(message + "@@@@@@@@@@@@@@@@@@@@@@");
         await sleep(1000);
