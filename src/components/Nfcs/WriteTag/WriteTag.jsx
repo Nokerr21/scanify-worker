@@ -3,7 +3,12 @@ import { logWriteTagTest } from "./LogWriteTagTest";
 import { sleep } from "./Sleep";
 import axios from "axios";
 
+const controller = new AbortController();
+const signal = controller.signal;
 
+export async function abortWriteTag(){
+    controller.abort();
+}
 
 export default async function writeTag(message, batchNumber, times = 2) {
   var checkBox = document.getElementById("batchCheck");
@@ -30,7 +35,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
           info: message,
           index: index,
           batchNumber: batchNumber
-        })
+        }, {signal})
         var id = res.data._id.toString();
         await ndef.write(id);
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber);
@@ -42,7 +47,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
         var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
           info: message,
           index: index
-        })
+        }, {signal})
         var id = res.data._id.toString();
         await ndef.write(id);
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
