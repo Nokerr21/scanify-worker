@@ -13,7 +13,7 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
         <div className="classic-row">
             <h1 className="header">SCANNED QR CODES</h1>
             <label>
-                <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(batchNumber); abortWriteTag()}}/>
+                <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber()); abortWriteTag()}}/>
                 SERIAL WRITING
             </label>
             <pre className="log-info" id="logSelectedQr"></pre>
