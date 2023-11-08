@@ -67,6 +67,8 @@ export default async function writeTag(message, batchNumber, times = 2) {
         //return await writeTag(message, times - 2)
         logWriteTagTest(error.message)
         console.log(error)
+        console.log("dupa")
+        enableButtons();
       }
       else{
         logWriteTagTest(error.message)
