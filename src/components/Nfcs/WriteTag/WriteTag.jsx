@@ -32,6 +32,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
         index += digits.substring(randNum, randNum + 1);
       }
       if (checkBox.checked == true){
+        await ndef.scan();
         var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
           info: message,
           index: index,
@@ -57,24 +58,20 @@ export default async function writeTag(message, batchNumber, times = 2) {
       }
 
     } catch(error) {
-      //consoleLogWrite(error);
       if (times > 0 && error.name != 'AbortError') {
         logWriteTag(error + "\n"+ "Can't write tag! try " + times + " more times!");
         return await writeTag(message, batchNumber, times - 1);
       }
-      //consoleLogWrite(error.code);
+      if (times == 0 && error.name != 'AbortError') {
+        logWriteTag(error + "\n"+ "Can't write tag!");
+        enableButtons();
+      }
       else if(error.name == 'AbortError'){
-        //return await writeTag(message, times - 2)
         logWriteTagTest(error.message)
-        console.log(error)
-        console.log("dupa")
         enableButtons();
       }
       else{
         logWriteTagTest(error.message)
-        console.log(error.message)
-        console.log(error.name)
-        console.log(error.code)
         enableButtons();
       }
     }
