@@ -12,7 +12,7 @@ import { newBatchNumber } from "./components/BatchNumber/NewBatchNumber";
 export default function App(){
 
   const [QrScanResult, setQrScanResult] = useState("")
-  const [tagIdInDb, setTagIdInDb] = useState("")
+  const [TagIdInDb, setTagIdInDb] = useState("")
   const [batchNumber, setBatchNumber] = useState(newBatchNumber())
   const [QRs, setQRs] = useState(() => {
     const localValue = localStorage.getItem("QRs")
@@ -42,7 +42,7 @@ export default function App(){
         <WriteTagComponent QrScanResult={QrScanResult} />
       </div>
     </form>
-    <QrListComponent qrs={QRs} setQrs={setQRs} setBatchNumber={setBatchNumber} batchNumber={batchNumber} setTagIdInDb={setTagIdInDb} tagIdInDb={tagIdInDb} />
+    <QrListComponent qrs={QRs} setQrs={setQRs} setBatchNumber={setBatchNumber} batchNumber={batchNumber} />
   </>
   );
 }

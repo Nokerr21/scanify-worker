@@ -6,15 +6,14 @@ import { disableButtons } from "../ButtonActions/DisableButtons";
 import writeTag, { abortWriteTag } from "../Nfcs/WriteTag/WriteTag";
 import { logSelectedQr } from "./LogQr/LogSelectedQr";
 import { deleteQr } from "./DeleteQr/DeleteQr";
-import deleteTagInDb from "../Nfcs/WriteTag/DeleteTagInDb";
 
 
-export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber, setTagIdInDb, tagIdInDb }) {
+export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
     return (
         <div className="classic-row">
             <h1 className="header">SCANNED QR CODES</h1>
             <label>
-                <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber()); deleteTagInDb(tagIdInDb); abortWriteTag()}}/>
+                <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber()); abortWriteTag()}}/>
                 SERIAL WRITING
             </label>
             <pre className="log-info" id="logSelectedQr"></pre>
@@ -31,8 +30,7 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber, setT
                         setQrs={setQrs}
                         deleteQr={deleteQr}
                         logSelectedQr={logSelectedQr}
-                        disableButtons={disableButtons}
-                        setTagIdInDb={setTagIdInDb}
+                        disableButtons={disableButtons} 
                     />
                 )})}
             </ul>

@@ -10,7 +10,7 @@ export async function abortWriteTag(){
     controller.abort();
 }
 
-export default async function writeTag({message, batchNumber, times = 2, setTagIdInDb}) {
+export default async function writeTag(message, batchNumber, times = 2) {
   var checkBox = document.getElementById("batchCheck");
   console.log(message);
   //setMess(message);
@@ -38,12 +38,11 @@ export default async function writeTag({message, batchNumber, times = 2, setTagI
           signal: signal
         })
         var id = res.data._id.toString();
-        setTagIdInDb(id);
         await ndef.write(id);
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber);
         console.log(message + "@@@@@@@@@@@@@@@@@@@@@@");
         await sleep(1000);
-        await writeTag(message, batchNumber, {setTagIdInDb});
+        await writeTag(message, batchNumber);
       }
       else{
         var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
