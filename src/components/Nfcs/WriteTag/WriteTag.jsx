@@ -10,7 +10,7 @@ export async function abortWriteTag(){
     controller.abort();
 }
 
-export default async function writeTag(message, batchNumber, times = 2) {
+export default async function writeTag(message, batchNumber, times = 2, setTagIdInDb) {
   var checkBox = document.getElementById("batchCheck");
   console.log(message);
   //setMess(message);
@@ -38,6 +38,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
           signal: signal
         })
         var id = res.data._id.toString();
+        setTagIdInDb(id);
         await ndef.write(id);
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber);
         console.log(message + "@@@@@@@@@@@@@@@@@@@@@@");
