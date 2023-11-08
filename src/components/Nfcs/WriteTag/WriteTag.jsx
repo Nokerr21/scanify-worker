@@ -50,6 +50,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
         await writeTag(message, batchNumber);
       }
       else{
+        logWriteTagTest("Writing tag... Step[1/2]")
         var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
           info: message,
           index: index,
@@ -57,6 +58,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
         })
         var id = res.data._id.toString();
         await ndef.write(id);
+        logWriteTagTest("Success!")
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
       }
 
