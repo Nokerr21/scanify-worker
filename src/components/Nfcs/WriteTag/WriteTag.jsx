@@ -2,6 +2,7 @@ import { logWriteTag } from "./LogWriteTag";
 import { logWriteTagTest } from "./LogWriteTagTest";
 import { sleep } from "./Sleep";
 import axios from "axios";
+import setTagIdInDb from "../../../App"
 
 const controller = new AbortController();
 const signal = controller.signal;
@@ -10,7 +11,7 @@ export async function abortWriteTag(){
     controller.abort();
 }
 
-export default async function writeTag(message, batchNumber, times = 2, setTagIdInDb) {
+export default async function writeTag(message, batchNumber, times = 2) {
   var checkBox = document.getElementById("batchCheck");
   console.log(message);
   //setMess(message);

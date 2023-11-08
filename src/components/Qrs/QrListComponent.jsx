@@ -9,7 +9,7 @@ import { deleteQr } from "./DeleteQr/DeleteQr";
 import deleteTagInDb from "../Nfcs/WriteTag/DeleteTagInDb";
 
 
-export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber, setTagIdInDb, tagIdInDb }) {
+export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber, tagIdInDb }) {
     return (
         <div className="classic-row">
             <h1 className="header">SCANNED QR CODES</h1>
@@ -32,7 +32,6 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber, setT
                         deleteQr={deleteQr}
                         logSelectedQr={logSelectedQr}
                         disableButtons={disableButtons}
-                        setTagIdInDb={setTagIdInDb}
                     />
                 )})}
             </ul>

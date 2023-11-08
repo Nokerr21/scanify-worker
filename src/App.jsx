@@ -42,7 +42,7 @@ export default function App(){
         <WriteTagComponent QrScanResult={QrScanResult} />
       </div>
     </form>
-    <QrListComponent qrs={QRs} setQrs={setQRs} setBatchNumber={setBatchNumber} batchNumber={batchNumber} setTagIdInDb={setTagIdInDb} tagIdInDb={tagIdInDb} />
+    <QrListComponent qrs={QRs} setQrs={setQRs} setBatchNumber={setBatchNumber} batchNumber={batchNumber} tagIdInDb={tagIdInDb} />
   </>
   );
 }
