@@ -10,7 +10,7 @@ export async function abortWriteTag(){
     controller.abort();
 }
 
-export default async function writeTag(message, batchNumber, times = 2, {setTagIdInDb}) {
+export default async function writeTag({message, batchNumber, times = 2, setTagIdInDb}) {
   var checkBox = document.getElementById("batchCheck");
   console.log(message);
   //setMess(message);
