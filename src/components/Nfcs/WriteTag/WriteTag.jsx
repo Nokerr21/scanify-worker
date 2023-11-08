@@ -32,7 +32,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
         index += digits.substring(randNum, randNum + 1);
       }
       if (checkBox.checked == true){
-        await ndef.scan();
+        ndef.scan();
         var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
           info: message,
           index: index,
