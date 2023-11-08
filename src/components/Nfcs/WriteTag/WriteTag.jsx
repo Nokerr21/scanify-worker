@@ -43,7 +43,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
         await ndef.write(id);
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber);
         console.log(message + "@@@@@@@@@@@@@@@@@@@@@@");
-        await sleep(1000);
+        await sleep(500);
         await writeTag(message, batchNumber);
       }
       else{
