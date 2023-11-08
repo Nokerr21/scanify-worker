@@ -70,7 +70,9 @@ export default async function writeTag(message, batchNumber, times = 2) {
       }
       else{
         logWriteTagTest(error.message)
-        console.log(error)
+        console.log(error.message)
+        console.log(error.name)
+        console.log(error.code)
         enableButtons();
       }
     }
