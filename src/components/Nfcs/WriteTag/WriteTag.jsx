@@ -1,3 +1,4 @@
+import { enableButtons } from "../../ButtonActions/EnableButtons";
 import { logWriteTag } from "./LogWriteTag";
 import { logWriteTagTest } from "./LogWriteTagTest";
 import { sleep } from "./Sleep";
@@ -70,6 +71,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
       else{
         logWriteTagTest(error.message)
         console.log(error)
+        enableButtons();
       }
     }
   } 
