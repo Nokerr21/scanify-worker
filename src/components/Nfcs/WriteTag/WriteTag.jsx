@@ -2,7 +2,6 @@ import { logWriteTag } from "./LogWriteTag";
 import { logWriteTagTest } from "./LogWriteTagTest";
 import { sleep } from "./Sleep";
 import axios from "axios";
-import setTagIdInDb from "../../../App"
 
 const controller = new AbortController();
 const signal = controller.signal;
@@ -11,7 +10,7 @@ export async function abortWriteTag(){
     controller.abort();
 }
 
-export default async function writeTag(message, batchNumber, times = 2) {
+export default async function writeTag(message, batchNumber, times = 2, {setTagIdInDb}) {
   var checkBox = document.getElementById("batchCheck");
   console.log(message);
   //setMess(message);
@@ -44,7 +43,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber);
         console.log(message + "@@@@@@@@@@@@@@@@@@@@@@");
         await sleep(1000);
-        await writeTag(message, batchNumber);
+        await writeTag(message, batchNumber, {setTagIdInDb});
       }
       else{
         var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
@@ -67,9 +66,11 @@ export default async function writeTag(message, batchNumber, times = 2) {
       else if(error.name == 'AbortError'){
         //return await writeTag(message, times - 2)
         logWriteTagTest(error.message)
+        console.log(error)
       }
       else{
         logWriteTagTest(error.message)
+        console.log(error)
       }
     }
   } 
