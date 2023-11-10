@@ -2,7 +2,7 @@ import { enableButtons } from "../../ButtonActions/EnableButtons";
 import { logWriteTag } from "./LogWriteTag";
 import { logWriteTagTest } from "./LogWriteTagTest";
 import { sleep } from "./Sleep";
-import { axios } from "../../../axios";
+import axios from "../../../axios";
 
 export default async function writeTag(message, batchNumber, times = 2) {
   var checkBox = document.getElementById("batchCheck");
