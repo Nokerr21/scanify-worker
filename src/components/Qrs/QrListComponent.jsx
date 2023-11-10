@@ -3,7 +3,7 @@ import { newBatchNumber } from "../BatchNumber/NewBatchNumber";
 import { logBatchNumber } from "../BatchNumber/LogBatchNumber";
 import { enableButtons } from "../ButtonActions/EnableButtons";
 import { disableButtons } from "../ButtonActions/DisableButtons";
-import writeTag, { abortWriteTag } from "../Nfcs/WriteTag/WriteTag";
+import writeTag from "../Nfcs/WriteTag/WriteTag";
 import { logSelectedQr } from "./LogQr/LogSelectedQr";
 import { deleteQr } from "./DeleteQr/DeleteQr";
 
@@ -13,7 +13,7 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
         <div className="classic-row">
             <h1 className="header">SCANNED QR CODES</h1>
             <label>
-                <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber()); abortWriteTag()}}/>
+                <input type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber())}}/>
                 SERIAL WRITING
             </label>
             <pre className="log-info" id="logSelectedQr"></pre>

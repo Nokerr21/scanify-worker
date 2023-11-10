@@ -4,21 +4,11 @@ import { logWriteTagTest } from "./LogWriteTagTest";
 import { sleep } from "./Sleep";
 import axios from "axios";
 
-const controller = new AbortController();
-const signal = controller.signal;
-
-export async function abortWriteTag(){
-    controller.abort();
-}
-
 export default async function writeTag(message, batchNumber, times = 2) {
   var checkBox = document.getElementById("batchCheck");
   console.log(message);
-  //setMess(message);
   if ("NDEFReader" in window) {
     const ndef = new NDEFReader();
-    //  const byteSize = str => new Blob([str]).size;
-    //  consoleLogWriteTest(byteSize(message))
     try {
       var today = new Date();
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -38,7 +28,6 @@ export default async function writeTag(message, batchNumber, times = 2) {
           info: message,
           index: index,
           batchNumber: batchNumber,
-          signal: signal
         })
         var id = res.data._id.toString();
         logWriteTagTest("Writing tag... Step[2/3]")
@@ -54,7 +43,6 @@ export default async function writeTag(message, batchNumber, times = 2) {
         var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
           info: message,
           index: index,
-          signal: signal
         })
         var id = res.data._id.toString();
         await ndef.write(id);
