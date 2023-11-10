@@ -2,7 +2,7 @@ import { enableButtons } from "../../ButtonActions/EnableButtons";
 import { logWriteTag } from "./LogWriteTag";
 import { logWriteTagTest } from "./LogWriteTagTest";
 import { sleep } from "./Sleep";
-import axios from "axios";
+import axios from "../../../axios";
 
 export default async function writeTag(message, batchNumber, times = 2) {
   var checkBox = document.getElementById("batchCheck");
@@ -23,30 +23,30 @@ export default async function writeTag(message, batchNumber, times = 2) {
       }
       if (checkBox.checked == true){
         await ndef.write("isAccess");
-        logWriteTagTest("Writing tag... Step[1/3]")
-        var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
+        logWriteTagTest("Writing tag... Step[1/3]");
+        var res = await axios.post('/nfcs', {
           info: message,
           index: index,
           batchNumber: batchNumber,
         })
         var id = res.data._id.toString();
-        logWriteTagTest("Writing tag... Step[2/3]")
+        logWriteTagTest("Writing tag... Step[2/3]");
         await ndef.write(id);
-        logWriteTagTest("Success!")
+        logWriteTagTest("Success!");
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber);
         console.log(message + "@@@@@@@@@@@@@@@@@@@@@@");
         await sleep(1000);
         await writeTag(message, batchNumber);
       }
       else{
-        logWriteTagTest("Writing tag... Step[1/2]")
-        var res = await axios.post('https://node-nfc-db.onrender.com/api/nfcs', {
+        var res = await axios.post('/nfcs', {
           info: message,
           index: index,
         })
         var id = res.data._id.toString();
+        logWriteTagTest("Writing tag... Step[1/2]");
         await ndef.write(id);
-        logWriteTagTest("Success!")
+        logWriteTagTest("Success!");
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
       }
 
