@@ -30,6 +30,8 @@ export default async function readTag() {
                 "\n" + "TimeStamp: " + dateTime);
               }
               
+            }).catch(err => {
+              logReadTag(err);
             });
           }
         }
