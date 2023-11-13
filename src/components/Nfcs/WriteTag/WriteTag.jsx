@@ -38,7 +38,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
         await sleep(1000);
         await writeTag(message, batchNumber);
       }
-      else{
+      else {
         var res = await axios.post('/nfcs', {
           info: message,
           index: index,
@@ -59,11 +59,11 @@ export default async function writeTag(message, batchNumber, times = 2) {
         logWriteTag(error + "\n"+ "Can't write tag!");
         enableButtons();
       }
-      else if(error.name == 'AbortError'){
+      else if(error.name == 'AbortError') {
         logWriteTagTest(error.message)
         enableButtons();
       }
-      else{
+      else {
         logWriteTagTest(error.message)
         enableButtons();
       }

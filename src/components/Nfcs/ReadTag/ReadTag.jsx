@@ -31,10 +31,10 @@ export default async function readTag() {
               }
               
             }).catch(err => {
-              if (err.name == 'TypeError'){
+              if (err.name == 'TypeError') {
                 logReadTag('Tag is not defined in our database')
               }
-              else{
+              else {
                 logReadTag('Something went wrong while connecting to database')
               }
             });
@@ -48,7 +48,7 @@ export default async function readTag() {
       if (error instanceof Error && error.name === 'AbortError') {
         // work time expired, just return
       }
-      else{
+      else {
         logReadTag(error);
       }
       
