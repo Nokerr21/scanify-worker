@@ -34,6 +34,9 @@ export default async function readTag() {
               if (err.name == 'TypeError'){
                 logReadTag('Tag is not defined in our database')
               }
+              else{
+                logReadTag('Something went wrong while connecting to database')
+              }
             });
           }
         }
