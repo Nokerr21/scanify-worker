@@ -31,7 +31,9 @@ export default async function readTag() {
               }
               
             }).catch(err => {
-              logReadTag(err);
+              if (err.name == 'TypeError'){
+                logReadTag('Tag is not defined in our database')
+              }
             });
           }
         }
