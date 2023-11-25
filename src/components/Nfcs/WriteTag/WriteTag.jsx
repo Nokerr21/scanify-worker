@@ -70,6 +70,6 @@ export default async function writeTag(message, batchNumber, times = 2) {
     }
   } 
   else {
-    logWriteTag("Web NFC is not supported.");
+    logWriteTag("WebNFC API isn't supported in this browser.");
   }
 }

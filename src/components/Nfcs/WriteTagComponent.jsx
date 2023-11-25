@@ -1,12 +1,13 @@
 import writeTag from "./WriteTag/WriteTag"
+import './WriteTagComponent.css'
 
 
 export function WriteTagComponent( { QrScanResult } ) {
     return (
-        <div className="form-row">
-            <button onClick={() => writeTag(QrScanResult)} className="btn" id="btn-write">WRITE QR TO NFC</button>
-            <pre className="log" id="logWriteTagTest"></pre>
-            <pre className="log" id="logWriteTag"></pre>
+        <div className="row-btn-write">
+            <button onClick={() => writeTag(QrScanResult)} className="btn-write" id="btn-write">Write QR to NFC</button>
+            <pre className="log-write" id="logWriteTagTest"></pre>
+            <pre className="log-write" id="logWriteTag"></pre>
         </div>
     );
 }

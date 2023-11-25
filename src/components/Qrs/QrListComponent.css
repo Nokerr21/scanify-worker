@@ -1,0 +1,44 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .row-list {
+    background-image: url('../../../images/divList10.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 7px 7px var(--div-box-shadow-color);
+    padding: 1.1rem;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: left;
+    text-indent: 0rem;
+    margin-bottom: 0rem;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease-out;
+  }
+
+  .labl-list {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: large;
+    font-family: "Prompt", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-indent: 0.2rem;
+  }
+
+  .serial-label {
+    color: white;
+    font-family: "Prompt", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+
+  .checkbox-serial {
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  

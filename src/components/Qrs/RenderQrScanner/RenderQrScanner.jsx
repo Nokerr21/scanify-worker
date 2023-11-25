@@ -1,10 +1,18 @@
-import { Html5QrcodeScanner } from "html5-qrcode";
+import { Html5QrcodeScanner, Html5QrcodeScanType } from "html5-qrcode";
 import { logQrScanRes } from "./LogQrScanRes";
 import { sleep } from "../../Nfcs/WriteTag/Sleep";
 
 export function renderQrScanner( setQrs, setQrScanResult ){
-    const html5QrcodeScanner = new Html5QrcodeScanner("readerQR", { fps: 5, qrbox: 250 });
-  
+    const scannerConfig = {
+        fps: 15,
+        qrbox: 250,
+        supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
+        rememberLastUsedCamera: false,
+        showTorchButtonIfSupported: true,
+        aspectRatio: 1.0
+    }
+    const html5QrcodeScanner = new Html5QrcodeScanner("readerQR", scannerConfig);
+
     html5QrcodeScanner.render(onScanSuccess);
 
     async function onScanSuccess(decodedText, decodedResult) {

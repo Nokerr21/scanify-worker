@@ -37,8 +37,7 @@ export default function App(){
       <NavComponent />
       <ReadTagComponent />   
       <div className="form-div">
-        <QrScannerComponent />
-        <WriteTagComponent QrScanResult={QrScanResult} />
+        <QrScannerComponent QrScanResult={QrScanResult} />
       </div>
     </form>
     <QrListComponent qrs={QRs} setQrs={setQRs} setBatchNumber={setBatchNumber} batchNumber={batchNumber} />
