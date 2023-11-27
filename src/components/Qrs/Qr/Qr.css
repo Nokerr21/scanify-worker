@@ -6,12 +6,13 @@
   .button-row {
     display: flex;
     flex-direction: row;
-    gap: 0.6rem;
+    gap: 0.5rem;
+    background-color: antiquewhite;
   }
 
   .litem {
     overflow-wrap: break-word;
-    width: 150px;
+    width: 130px;
     white-space: pre-wrap;
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -21,7 +22,7 @@
     background: hsla(0, 0%, 90%, 0.7);
     border: 1px solid hsla(0, 0%, 100%, 0.8);
     color: hsla(0, 0%, 0%, 1);
-    padding: 0.15em 0.2em 0.15em 0.2em;
+    padding: 0.5em 0.75em 0.5em 0.75em;
     border-radius: 1.5em;
     cursor: pointer;
     outline: none;
@@ -51,7 +52,7 @@
     background: hsla(0, 100%, 35%, 0.7);
     border: 1px solid hsla(0, 100%, 45%, 0.8);
     color: hsl(0, 0%, 90%);
-    padding: 0.15em 0.2em 0.15em 0.2em;
+    padding: 0.5em 0.75em 0.5em 0.75em;
     border-radius: 1.5em;
     cursor: pointer;
     outline: none;
