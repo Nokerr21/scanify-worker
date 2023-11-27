@@ -51,4 +51,25 @@
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
+
+  .list {
+    margin: 0;
+    padding: 0;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: -0.7rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .list li {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 0.6rem;
+    align-items: center;
+  }
   

@@ -9,33 +9,9 @@
     gap: 0.6rem;
   }
 
-  .list {
-    margin: 0;
-    padding: 0;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-    margin-bottom: -0.7rem;
-    list-style: none;
-  }
-  
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .list li {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-    gap: 1rem;
-    align-items: center;
-  }
-
   .litem {
     overflow-wrap: break-word;
-    width: 110px;
+    width: 150px;
     white-space: pre-wrap;
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: bold;
