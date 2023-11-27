@@ -1,6 +1,8 @@
 export function enableButtons(){
-    var buttons = document.querySelectorAll('ul.list button.btn')
+    var buttonsDelete = document.querySelectorAll('ul.list button.btn-delete')
+    var buttonsWrite = document.querySelectorAll('ul.list button.btn-list-write')
     var buttonInDiv = document.getElementById("btn-write");
-    buttons.forEach((button) => {button.disabled = false;});
+    buttonsWrite.forEach((button) => {button.disabled = false;});
+    buttonsDelete.forEach((button) => {button.disabled = false;});
     buttonInDiv.disabled = false;
 }

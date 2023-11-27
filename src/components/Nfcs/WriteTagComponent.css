@@ -39,6 +39,14 @@
     background: hsla(0, 0%, 90%, 0.95);
   }
 
+  .btn-write:disabled{
+    background: hsla(0, 0%, 90%, 0.15);
+    border: 1px solid hsl(0, 0%, 65%);
+    color: hsl(0, 0%, 70%);
+    cursor: not-allowed;
+  }
+  
+
   .log-write {
     overflow-wrap: break-word;
     max-width: 400px;

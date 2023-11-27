@@ -1,0 +1,101 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .button-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+
+  .list {
+    margin: 0;
+    padding: 0;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    margin-bottom: -0.7rem;
+    list-style: none;
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .list li {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .litem {
+    overflow-wrap: break-word;
+    width: 110px;
+    white-space:pre-wrap;
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+
+  .btn-list-write {
+    background: hsla(0, 0%, 90%, 0.7);
+    border: 1px solid hsla(0, 0%, 100%, 0.8);
+    color: hsla(0, 0%, 0%, 1);
+    padding: 0.5em 0.75em 0.5em 0.75em;
+    border-radius: 1.5em;
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  
+  .btn-list-write:hover,
+  .btn-list-write:focus-visible {
+    background: hsla(0, 0%, 90%, 0.85);
+  }
+
+  .btn-list-write:active {
+    background: hsla(0, 0%, 90%, 0.95);
+  }
+
+  .btn-list-write:disabled{
+    background: hsla(0, 0%, 90%, 0.15);
+    border: 1px solid hsl(0, 0%, 65%);
+    color: hsl(0, 0%, 70%);
+    cursor: not-allowed;
+  }
+  
+  .btn-delete {
+    background: hsla(0, 100%, 35%, 0.7);
+    border: 1px solid hsla(0, 100%, 45%, 0.8);
+    color: hsl(0, 0%, 90%);
+    padding: 0.5em 0.75em 0.5em 0.75em;
+    border-radius: 1.5em;
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  
+  .btn-delete:hover,
+  .btn-delete:focus-visible {
+    background: hsla(0, 100%, 35%, 0.88);
+  }
+
+  .btn-delete:active {
+    background: hsla(0, 100%, 35%, 0.95);
+  }
+
+  .btn-delete:disabled{
+    background: hsla(0, 0%, 90%, 0.15);
+    border: 1px solid hsl(0, 0%, 65%);
+    color: hsl(0, 0%, 70%);
+    cursor: not-allowed;
+  }

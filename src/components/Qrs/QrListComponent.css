@@ -4,7 +4,7 @@
   }
 
   .row-list {
-    background-image: url('../../../images/divListTak2.png');
+    background-image: url('../../../images/divList.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -40,5 +40,15 @@
     position: relative;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  .log-info {
+    overflow-wrap: break-word;
+    max-width:400px;
+    white-space:pre-wrap;
+    margin: 0.2rem;
+    text-indent: 0;
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: bold;
   }
   
