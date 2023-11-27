@@ -14,7 +14,7 @@
     padding: 0;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    margin-top: 0.2rem;
+    margin-top: 0.5rem;
     margin-bottom: -0.7rem;
     list-style: none;
   }
@@ -26,8 +26,9 @@
   }
   
   .list li {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     gap: 1rem;
     align-items: center;
   }
@@ -35,7 +36,7 @@
   .litem {
     overflow-wrap: break-word;
     width: 110px;
-    white-space:pre-wrap;
+    white-space: pre-wrap;
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
@@ -44,7 +45,7 @@
     background: hsla(0, 0%, 90%, 0.7);
     border: 1px solid hsla(0, 0%, 100%, 0.8);
     color: hsla(0, 0%, 0%, 1);
-    padding: 0.5em 0.75em 0.5em 0.75em;
+    padding: 0.25em 0.5em 0.25em 0.5em;
     border-radius: 1.5em;
     cursor: pointer;
     outline: none;
@@ -74,7 +75,7 @@
     background: hsla(0, 100%, 35%, 0.7);
     border: 1px solid hsla(0, 100%, 45%, 0.8);
     color: hsl(0, 0%, 90%);
-    padding: 0.5em 0.75em 0.5em 0.75em;
+    padding: 0.25em 0.5em 0.25em 0.5em;
     border-radius: 1.5em;
     cursor: pointer;
     outline: none;
