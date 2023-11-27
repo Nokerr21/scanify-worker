@@ -21,7 +21,7 @@
     background: hsla(0, 0%, 90%, 0.7);
     border: 1px solid hsla(0, 0%, 100%, 0.8);
     color: hsla(0, 0%, 0%, 1);
-    padding: 0.5em 0.75em 0.5em 0.75em;
+    padding: 0.4em 0.75em 0.4em 0.75em;
     border-radius: 1.5em;
     cursor: pointer;
     outline: none;
@@ -51,7 +51,7 @@
     background: hsla(0, 100%, 35%, 0.7);
     border: 1px solid hsla(0, 100%, 45%, 0.8);
     color: hsl(0, 0%, 90%);
-    padding: 0.5em 0.75em 0.5em 0.75em;
+    padding: 0.4em 0.75em 0.4em 0.75em;
     border-radius: 1.5em;
     cursor: pointer;
     outline: none;
