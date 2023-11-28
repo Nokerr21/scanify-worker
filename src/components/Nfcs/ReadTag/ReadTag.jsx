@@ -36,9 +36,11 @@ export default async function readTag() {
               
             }).catch(err => {
               if (err.name == 'TypeError') {
+                logReadTagTest("Oops!");
                 logReadTag('Tag is not defined in our database')
               }
               else {
+                logReadTagTest("Oops!");
                 logReadTag('Something went wrong while connecting to database')
               }
             });
@@ -58,6 +60,7 @@ export default async function readTag() {
       
     }
   } else {
+    logReadTagTest("Oops!");
     logReadTag("WebNFC API isn't supported in this browser.");
   }
 }

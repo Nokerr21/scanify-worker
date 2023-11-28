@@ -63,3 +63,14 @@
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
+
+  .log-write-test {
+    overflow-wrap: break-word;
+    max-width: 400px;
+    white-space: pre-wrap;
+    color: white;
+    margin-bottom: -0.6rem;
+    text-indent: 0;
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }

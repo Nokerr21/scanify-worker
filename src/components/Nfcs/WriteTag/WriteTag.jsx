@@ -52,10 +52,12 @@ export default async function writeTag(message, batchNumber, times = 2) {
 
     } catch(error) {
       if (times > 0 && error.name != 'AbortError') {
+        logWriteTagTest("Oops!");
         logWriteTag(error + "\n"+ "Can't write tag! try " + times + " more times!");
         return await writeTag(message, batchNumber, times - 1);
       }
       if (times == 0 && error.name != 'AbortError') {
+        logWriteTagTest("Oops!");
         logWriteTag(error + "\n"+ "Can't write tag!");
         enableButtons();
       }
@@ -70,6 +72,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
     }
   } 
   else {
+    logWriteTagTest("Oops!");
     logWriteTag("WebNFC API isn't supported in this browser.");
   }
 }
