@@ -76,9 +76,9 @@
     font-weight: bold;
   }
 
-  .labl {
+  .labl-read {
     color: white;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     font-size: large;
     font-family: "Prompt", Arial, Helvetica, sans-serif;
     font-weight: bold;
