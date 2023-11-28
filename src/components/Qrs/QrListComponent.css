@@ -34,6 +34,7 @@
     color: white;
     font-family: "Prompt", Arial, Helvetica, sans-serif;
     font-weight: bold;
+    margin-left: -0.2rem;
   }
 
   .checkbox-serial {
@@ -49,6 +50,7 @@
     margin: 0rem;
     text-indent: 0;
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: bold;
   }
 
   .list {
