@@ -21,6 +21,14 @@
     transition: all 0.3s ease-out;
   }
 
+  .log-read-div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 0.1rem;
+    gap: 0rem;
+  }
+
   .btn {
     background: hsla(0, 0%, 90%, 0.7);
     border: 1px solid hsla(0, 0%, 100%, 0.8);

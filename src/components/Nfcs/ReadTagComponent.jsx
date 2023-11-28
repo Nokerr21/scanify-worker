@@ -7,7 +7,10 @@ export function ReadTagComponent() {
         <div className="row">
             <label className="labl">READ NFC</label>
             <button onClick={() => readTag()} className="btn">Read</button>
-            <pre className="log" id="logReadTag"></pre>
+            <div className="log-read-div">
+                <pre className="log" id="logReadTagTest"></pre>
+                <pre className="log" id="logReadTag"></pre>
+            </div>
         </div>
     );
 }

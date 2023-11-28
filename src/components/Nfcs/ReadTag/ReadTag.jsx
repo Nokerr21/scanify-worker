@@ -1,5 +1,6 @@
 import logReadTag from "./LogReadTag";
 import axios from "../../../axios";
+import logReadTagTest from "./LogReadTagTest"
 
 export default async function readTag() {
   if ("NDEFReader" in window) {
@@ -15,6 +16,7 @@ export default async function readTag() {
         ndef.scan({ signal: abortContr.signal }).catch(err => reject(err));
         ndef.onreading = event => {
           const decoder = new TextDecoder();
+          logReadTagTest("Reading tag... Step[1/2]");
           for (const record of event.message.records) {
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -22,10 +24,12 @@ export default async function readTag() {
             var dateTime = date + ' ' + time;
             axios.get('/nfcs/' + decoder.decode(record.data)).then(function(result){
               if(result.data.batchNumber != undefined){
+                logReadTagTest("Success!");
                 logReadTag("Product information:\n" + result.data.info.toString() + "\n" + "Index: " + result.data.index.toString() +
                 "\n" + "Batch number: " + result.data.batchNumber.toString() + "\n" + "TimeStamp: " + dateTime);
               }
               else{
+                logReadTagTest("Success!");
                 logReadTag("Product information:\n" + result.data.info.toString() + "\n" + "Index: " + result.data.index.toString() +
                 "\n" + "TimeStamp: " + dateTime);
               }
