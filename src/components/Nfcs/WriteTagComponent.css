@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin-top: 0.1rem;
+    margin-top: 0.5rem;
     transition: all 0.3s ease-out;
   }
 
@@ -35,7 +35,6 @@
     margin-left: 2.7rem;
     margin-right: 2.4rem;
     margin-top: 1rem;
-    margin-bottom: -0.8rem;
   }
   
   .btn-write:hover,
