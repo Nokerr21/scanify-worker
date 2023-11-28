@@ -12,6 +12,14 @@
     transition: all 0.3s ease-out;
   }
 
+  .log-write-div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 0.1rem;
+    transition: all 0.3s ease-out;
+  }
+
   .btn-write {
     background: hsla(0, 0%, 90%, 0.7);
     border: 1px solid hsla(0, 0%, 100%, 0.8);
@@ -45,7 +53,6 @@
     color: hsl(0, 0%, 70%);
     cursor: not-allowed;
   }
-  
 
   .log-write {
     overflow-wrap: break-word;
@@ -56,5 +63,4 @@
     text-indent: 0;
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: bold;
-    margin-top: 0.5rem;
   }
