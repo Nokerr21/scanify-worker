@@ -36,9 +36,7 @@
     background: hsla(0, 0%, 90%, 0.85);
   }
 
-  .btn-list-write:active {
-    background: hsla(0, 0%, 90%, 0.95);
-  }
+
 
   .btn-list-write:disabled{
     background: hsla(0, 0%, 90%, 0.15);
@@ -66,9 +64,7 @@
     background: hsla(0, 100%, 35%, 0.88);
   }
 
-  .btn-delete:active {
-    background: hsla(0, 100%, 35%, 0.95);
-  }
+
 
   .btn-delete:disabled{
     background: hsla(0, 0%, 90%, 0.15);
