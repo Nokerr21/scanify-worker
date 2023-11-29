@@ -5,6 +5,7 @@ import logReadTagTest from "./LogReadTagTest"
 export default async function readTag() {
   if ("NDEFReader" in window) {
     const ndef = new NDEFReader();
+    logReadTag("Bring the tag close to the reader...  Step[1/3]")
     try {
       return new Promise((resolve, reject) => {
         const abortContr = new AbortController();
@@ -16,7 +17,7 @@ export default async function readTag() {
         ndef.scan({ signal: abortContr.signal }).catch(err => reject(err));
         ndef.onreading = event => {
           const decoder = new TextDecoder();
-          logReadTagTest("Reading tag... Step[1/2]");
+          logReadTagTest("Reading tag... Step[2/3]");
           for (const record of event.message.records) {
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();

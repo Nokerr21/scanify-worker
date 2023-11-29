@@ -5,6 +5,5 @@ export function disableButtons(){
     if(checkBox.checked == true) {
       buttonsInList.forEach((button) => {button.disabled = true;});
       buttonInDiv.disabled = true;
-      console.log("checked")
     }
 }
