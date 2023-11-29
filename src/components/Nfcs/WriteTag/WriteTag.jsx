@@ -7,7 +7,7 @@ import axios from "../../../axios";
 export default async function writeTag(message, batchNumber, times = 2) {
   var checkBox = document.getElementById("batchCheck");
   if ("NDEFReader" in window) {
-    if (times < 2) {
+    if (times == 2) {
       logWriteTag("");
     }
     const ndef = new NDEFReader();
