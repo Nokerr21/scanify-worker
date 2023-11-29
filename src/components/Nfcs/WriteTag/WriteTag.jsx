@@ -11,6 +11,10 @@ export default async function writeTag(message, batchNumber, times = 2) {
       logWriteTag("");
     }
     const ndef = new NDEFReader();
+    if (message === null) {
+      logWriteTagTest("Oops!");
+      logWriteTag("Scan the QR code first.");
+    }
     try {
       var today = new Date();
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -22,10 +26,6 @@ export default async function writeTag(message, batchNumber, times = 2) {
       for (let iter = 0; iter < indexLength; iter++) {
         let randNum = Math.floor(Math.random() * digits.length);
         index += digits.substring(randNum, randNum + 1);
-      }
-      if (message === null) {
-        logWriteTagTest("Oops!");
-        logWriteTag("Scan the QR code first.");
       }
       if (checkBox.checked == true){
         logWriteTagTest("Bring the tag near the reader.  Step[1/4]");
