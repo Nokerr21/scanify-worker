@@ -10,7 +10,7 @@ import { newBatchNumber } from "./components/BatchNumber/NewBatchNumber";
 
 export default function App(){
 
-  const [QrScanResult, setQrScanResult] = useState("")
+  const [QrScanResult, setQrScanResult] = useState(undefined)
   const [batchNumber, setBatchNumber] = useState(newBatchNumber())
   const [QRs, setQRs] = useState(() => {
     const localValue = localStorage.getItem("QRs")
