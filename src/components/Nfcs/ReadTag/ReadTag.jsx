@@ -41,8 +41,8 @@ export default async function readTag() {
                 logReadTag("This tag is no longer in our database.");
               }
               else {
-                logReadTagTest("This tag is not defined in our database!");
-                logReadTag('Message saved on this tag:' + "\n" + decoder.decode(record.data));
+                logReadTagTest("This tag is not defined in our database.");
+                logReadTag('Message saved on this tag:\n' + decoder.decode(record.data));
               }
             });
           }
