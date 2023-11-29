@@ -1,5 +1,6 @@
 import writeTag from "./WriteTag/WriteTag"
 import './WriteTagComponent.css'
+import { disableButtons } from "../ButtonActions/DisableButtons";
 
 
 export function WriteTagComponent( { QrScanResult } ) {
