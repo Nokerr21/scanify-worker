@@ -11,6 +11,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
       logWriteTag("");
     }
     const ndef = new NDEFReader();
+    console.log(message);
     if (message === null) {
       logWriteTagTest("Oops!");
       logWriteTag("Scan the QR code first.");
@@ -73,7 +74,6 @@ export default async function writeTag(message, batchNumber, times = 2) {
         }
       }
     }
-
   } 
   else {
     logWriteTagTest("Oops!");
