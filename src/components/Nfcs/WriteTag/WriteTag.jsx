@@ -23,6 +23,10 @@ export default async function writeTag(message, batchNumber, times = 2) {
         let randNum = Math.floor(Math.random() * digits.length);
         index += digits.substring(randNum, randNum + 1);
       }
+      if (message === null) {
+        logWriteTagTest("Oops!");
+        logWriteTag("Scan the QR code first.");
+      }
       if (checkBox.checked == true){
         logWriteTagTest("Bring the tag near the reader.  Step[1/4]");
         await ndef.write("isAccess");
@@ -51,7 +55,6 @@ export default async function writeTag(message, batchNumber, times = 2) {
         logWriteTagTest("Success!");
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
       }
-
     } catch(error) {
       if (times > 0 && error.name != 'AbortError') {
         if (times == 2) {
