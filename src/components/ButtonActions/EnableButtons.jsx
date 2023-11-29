@@ -1,9 +1,10 @@
 export function enableButtons(){
-    var buttonsDelete = document.querySelectorAll('ul.list-qrs button')
-  
+    var buttonsInList = document.querySelectorAll('ul.list-qrs button')
     var buttonInDiv = document.getElementById("btn-write");
-    buttonsDelete.forEach((button) => {button.disabled = false;});
- 
-    buttonInDiv.disabled = false;
-    console.log('enable');
+    var checkBox = document.getElementById("batchCheck");
+    if(checkBox.checked == false) {
+        buttonsInList.forEach((button) => {button.disabled = false;});
+        buttonInDiv.disabled = false;
+        console.log('enable');
+      }
 }
