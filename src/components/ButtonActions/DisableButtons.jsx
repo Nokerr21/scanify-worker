@@ -5,7 +5,8 @@ export function disableButtons(){
     var buttonInDiv = document.getElementById("btn-write");
     if(checkBox.checked == true) {
       buttonsDelete.forEach((button) => {button.disabled = true;});
-      buttonsDelete.forEach((button) => {button.disabled = true;});
+      buttonsWrite.forEach((button) => {button.disabled = true;});
       buttonInDiv.disabled = true;
+      console.log("checked")
     }
 }
