@@ -37,13 +37,12 @@ export default async function readTag() {
               
             }).catch(err => {
               if (err.name == 'TypeError') {
-                logReadTagTest("Oops! Tag is not defined in our database");
-                logReadTag(decoder.decode(record.data))
+                logReadTagTest("Oops!");
+                logReadTag("This tag is no longer defined in our database");
               }
               else {
-                console.log(err.name)
-                logReadTagTest("Oops!");
-                logReadTag('Something went wrong while connecting to database')
+                logReadTagTest("This tag is not defined in our database");
+                logReadTag('Message saved on this tag:' + "\n" + decoder.decode(record.data));
               }
             });
           }
