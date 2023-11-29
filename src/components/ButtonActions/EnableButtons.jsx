@@ -5,4 +5,5 @@ export function enableButtons(){
     buttonsDelete.forEach((button) => {button.disabled = false;});
     buttonsWrite.forEach((button) => {button.disabled = false;});
     buttonInDiv.disabled = false;
+    console.log('enable');
 }
