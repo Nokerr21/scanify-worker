@@ -7,12 +7,6 @@ import axios from "../../../axios";
 export default async function writeTag(message, batchNumber, times = 2) {
   var checkBox = document.getElementById("batchCheck");
   if ("NDEFReader" in window) {
-    if (checkBox.checked == true) {
-      logWriteTagTest("Bring the tag near the reader.  Step[1/4]");
-    }
-    else {
-      logWriteTagTest("Bring the tag near the reader.  Step[1/3]");
-    }
     logWriteTag("");
     const ndef = new NDEFReader();
     try {
@@ -28,6 +22,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
         index += digits.substring(randNum, randNum + 1);
       }
       if (checkBox.checked == true){
+        logWriteTagTest("Bring the tag near the reader.  Step[1/4]");
         await ndef.write("isAccess");
         logWriteTagTest("Writing tag... Step[2/4]");
         var res = await axios.post('/nfcs', {
@@ -49,7 +44,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
           index: index,
         })
         var id = res.data._id.toString();
-        logWriteTagTest("Writing tag... Step[2/3]");
+        logWriteTagTest("Bring the tag near the reader.  Step[1/2]");
         await ndef.write(id);
         logWriteTagTest("Success!");
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
