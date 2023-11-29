@@ -2,6 +2,23 @@ import './NavComponent.css'
 
 export default function Nav() {
 
+    function enableScroll(){
+        document.querySelector('body').setAttribute('scrollAbb', 'on');
+    }
+
+    function disableScroll(){
+        document.querySelector('body').setAttribute('scrollAbb', 'off');
+    }
+
+    const toggleScroll = (e) => {
+        if (e.target.checked) {
+            disableScroll()
+        }
+        else {
+            enableScroll()
+        }
+    }
+
     function setDarkMode(){
         document.querySelector('body').setAttribute('theme', 'dark');
         localStorage.setItem('selectedTheme', 'dark');
@@ -27,6 +44,11 @@ export default function Nav() {
         setLightMode();
     }
 
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
     return (
         <nav className="nav">
             <image className='site-logo'></image>
@@ -40,7 +62,7 @@ export default function Nav() {
                     <path className='moon-icon-color' d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#1C274C"/>
                 </svg>
             </label>
-            <input className='chbox' type="checkbox" id="active" />
+            <input onClick={scrollToTop} onChange={toggleScroll} className='chbox' type="checkbox" id="active" />
             <label htmlFor="active" className="menu-btn"><span></span></label>
             <label htmlFor="active" className="close-btn"></label>
             <div className="wrapper">
