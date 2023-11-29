@@ -23,6 +23,7 @@ export default async function readTag() {
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
             var dateTime = date + ' ' + time;
+            console.log(decoder.decode(record.data))
             axios.get('/nfcs/' + decoder.decode(record.data)).then(function(result){
               if(result.data.batchNumber != undefined){
                 logReadTagTest("Success!");
