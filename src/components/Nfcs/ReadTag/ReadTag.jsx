@@ -38,10 +38,10 @@ export default async function readTag() {
             }).catch(err => {
               if (err.name == 'TypeError') {
                 logReadTagTest("Oops!");
-                logReadTag("This tag is no longer defined in our database");
+                logReadTag("This tag is no longer in our database.");
               }
               else {
-                logReadTagTest("This tag is not defined in our database");
+                logReadTagTest("This tag is not defined in our database!");
                 logReadTag('Message saved on this tag:' + "\n" + decoder.decode(record.data));
               }
             });
