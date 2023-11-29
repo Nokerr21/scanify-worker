@@ -8,10 +8,10 @@ export default async function writeTag(message, batchNumber, times = 2) {
   var checkBox = document.getElementById("batchCheck");
   if ("NDEFReader" in window) {
     if (checkBox.checked == true) {
-      logWriteTagTest("Bring the tag near the reader. &nbsp Step[1/4]");
+      logWriteTagTest("Bring the tag near the reader.  Step[1/4]");
     }
     else {
-      logWriteTagTest("Bring the tag near the reader. &nbsp Step[1/3]");
+      logWriteTagTest("Bring the tag near the reader.  Step[1/3]");
     }
     logWriteTag("");
     const ndef = new NDEFReader();
@@ -49,7 +49,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
           index: index,
         })
         var id = res.data._id.toString();
-        logWriteTagTest("Writing tag... Step[1/2]");
+        logWriteTagTest("Writing tag... Step[2/3]");
         await ndef.write(id);
         logWriteTagTest("Success!");
         logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);

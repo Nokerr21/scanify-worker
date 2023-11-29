@@ -5,7 +5,7 @@ import logReadTagTest from "./LogReadTagTest"
 export default async function readTag() {
   if ("NDEFReader" in window) {
     const ndef = new NDEFReader();
-    logReadTagTest("Bring the tag near the reader. &nbsp Step[1/3]");
+    logReadTagTest("Bring the tag near the reader.  Step[1/3]");
     logReadTag("");
     try {
       return new Promise((resolve, reject) => {
