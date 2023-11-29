@@ -55,20 +55,17 @@ export default async function writeTag(message, batchNumber, times = 2) {
     } catch(error) {
       if (times > 0 && error.name != 'AbortError') {
         logWriteTagTest("Oops!");
-        logWriteTag(error + "\n"+ "Can't write tag! try " + times + " more times!");
+        if (times == 2) {
+          logWriteTag("A problem occurred while writing the tag! \n Try " + times + " more times.");
+        }
+        else {
+          logWriteTag("A problem occurred while writing the tag! \n Try " + times + " more time.");
+        }
         return await writeTag(message, batchNumber, times - 1);
       }
       if (times == 0 && error.name != 'AbortError') {
         logWriteTagTest("Oops!");
-        logWriteTag(error + "\n"+ "Can't write tag!");
-        enableButtons();
-      }
-      else if(error.name == 'AbortError') {
-        logWriteTagTest(error.message)
-        enableButtons();
-      }
-      else {
-        logWriteTagTest(error.message)
+        logWriteTag("Can't write this tag!");
         enableButtons();
       }
     }
