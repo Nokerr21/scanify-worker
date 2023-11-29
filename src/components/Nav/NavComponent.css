@@ -194,6 +194,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .checkbox-theme-label:after {

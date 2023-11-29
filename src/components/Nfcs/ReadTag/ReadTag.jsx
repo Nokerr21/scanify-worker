@@ -41,7 +41,7 @@ export default async function readTag() {
                 logReadTag(decoder.decode(record.data))
               }
               else {
-                console.log(err)
+                console.log(err.name)
                 logReadTagTest("Oops!");
                 logReadTag('Something went wrong while connecting to database')
               }
