@@ -11,7 +11,6 @@ export default async function writeTag(message, batchNumber, times = 2) {
       logWriteTag("");
     }
     const ndef = new NDEFReader();
-    console.log(message);
     if (message === undefined) {
       logWriteTagTest("Oops!");
       logWriteTag("Scan the QR code first.");
