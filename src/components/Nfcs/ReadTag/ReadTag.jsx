@@ -5,7 +5,7 @@ import logReadTagTest from "./LogReadTagTest"
 export default async function readTag() {
   if ("NDEFReader" in window) {
     const ndef = new NDEFReader();
-    logReadTagTest("Bring the tag close to the reader...  Step[1/3]")
+    logReadTagTest("Bring the tag close to the reader  Step[1/3]")
     try {
       return new Promise((resolve, reject) => {
         const abortContr = new AbortController();
@@ -37,8 +37,8 @@ export default async function readTag() {
               
             }).catch(err => {
               if (err.name == 'TypeError') {
-                logReadTagTest("Oops!");
-                logReadTag('Tag is not defined in our database')
+                logReadTagTest("Oops! Tag is not defined in our database");
+                logReadTag(decoder.decode(record.data))
               }
               else {
                 logReadTagTest("Oops!");
