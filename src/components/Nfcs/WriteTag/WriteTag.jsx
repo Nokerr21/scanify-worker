@@ -54,12 +54,11 @@ export default async function writeTag(message, batchNumber, times = 2) {
 
     } catch(error) {
       if (times > 0 && error.name != 'AbortError') {
-        logWriteTagTest("Oops!");
         if (times == 2) {
-          logWriteTag("A problem occurred while writing the tag! \n Try " + times + " more times.");
+          logWriteTag("A tag writing issue occurred! \nTry " + times + " more times.");
         }
         else {
-          logWriteTag("A problem occurred while writing the tag! \n Try " + times + " more time.");
+          logWriteTag("A tag writing issue occurred. \nTry " + times + " more time.");
         }
         return await writeTag(message, batchNumber, times - 1);
       }
