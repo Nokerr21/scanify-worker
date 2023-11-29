@@ -19,7 +19,7 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
             </label>
             <pre className="log-info" id="logSelectedQr"></pre>
             <pre className="log-info" id="logBatchNumber"></pre>
-            <ul className="list">
+            <ul className="list-qrs">
                 {qrs.length === 0 && "No QR codes stored"}
                 {qrs.map(qr => {
                 return (
