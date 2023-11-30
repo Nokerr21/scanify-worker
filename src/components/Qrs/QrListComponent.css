@@ -43,6 +43,13 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  .checkbox-index {
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    margin-left: 2rem;
+  }
+
   .log-info {
     overflow-wrap: break-word;
     max-width:400px;

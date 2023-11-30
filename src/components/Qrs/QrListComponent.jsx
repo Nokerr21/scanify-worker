@@ -16,6 +16,8 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
             <label className="serial-label">
                 <input className="checkbox-serial" type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber())}}/>
                 SERIAL WRITING
+                <input className="checkbox-index" type="checkbox" id="indexCheck" />
+                INDEXING
             </label>
             <pre className="log-info" id="logSelectedQr"></pre>
             <pre className="log-info" id="logBatchNumber"></pre>
