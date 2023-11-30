@@ -47,7 +47,7 @@
     position: relative;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    margin-left: 2rem;
+    margin-left: 2.5rem;
   }
 
   .log-info {
