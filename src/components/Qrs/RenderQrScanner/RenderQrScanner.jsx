@@ -22,7 +22,7 @@ export function renderQrScanner( setQrs, setQrScanResult ){
         var dateTime = date + ' ' + time;
         console.log(`Scan result: ${decodedText}`, decodedResult);
         setQrScanResult(decodedText);
-        logQrScanRes("Decoded information:\n" + decodedText + "\nScanned at:" + dateTime);
+        logQrScanRes("Decoded information:\n" + decodedText + "\nScanned at: " + dateTime);
         if (decodedText != ""){
             setQrs((currentQRs) => {
               return [... currentQRs, {id: crypto.randomUUID(), title: decodedText, completed: false}, ]
