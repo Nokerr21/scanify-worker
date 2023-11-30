@@ -21,19 +21,19 @@ export default async function readTag() {
           logReadTagTest("Reading tag... Step[2/3]");
           for (const record of event.message.records) {
             var today = new Date();
-            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
+            var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             var dateTime = date + ' ' + time;
             axios.get('/nfcs/' + decoder.decode(record.data)).then(function(result){
               if(result.data.batchNumber != undefined){
                 logReadTagTest("Success!");
                 logReadTag("Product information:\n" + result.data.info.toString() + "\n" + "Index: " + result.data.index.toString() +
-                "\n" + "Batch number: " + result.data.batchNumber.toString() + "\n" + "TimeStamp: " + dateTime);
+                "\n" + "Batch number: " + result.data.batchNumber.toString() + "\n" + "Read at: " + dateTime);
               }
               else{
                 logReadTagTest("Success!");
                 logReadTag("Product information:\n" + result.data.info.toString() + "\n" + "Index: " + result.data.index.toString() +
-                "\n" + "TimeStamp: " + dateTime);
+                "\n" + "Read at: " + dateTime);
               }
               
             }).catch(err => {

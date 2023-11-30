@@ -18,8 +18,8 @@ export default async function writeTag(message, batchNumber, times = 2) {
     else{
       try {
         var today = new Date();
-        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
+        var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var dateTime = date+' '+time;
         var index = ""
         const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -41,7 +41,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
           logWriteTagTest("Writing tag... Step[3/4]");
           await ndef.write(id);
           logWriteTagTest("Success!");
-          logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber);
+          logWriteTag("Written information:\n" + message +  "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber + "\n" + "Written at: " + dateTime);
           await sleep(1000);
           await writeTag(message, batchNumber);
         }
@@ -54,7 +54,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
           logWriteTagTest("Bring the tag near the reader.  Step[1/2]");
           await ndef.write(id);
           logWriteTagTest("Success!");
-          logWriteTag("Message: '" + message + "' written!" + "\n" + "TimeStamp: " + dateTime + "\n" + "Index: " + index);
+          logWriteTag("Written information:\n" + message  + "\n" + "Index: " + index + "\n" + "Written at: " + dateTime);
         }
       } catch(error) {
         if (times > 0 && error.name != 'AbortError') {
