@@ -17,12 +17,12 @@ export function renderQrScanner( setQrs, setQrScanResult ){
 
     async function onScanSuccess(decodedText, decodedResult) {
         var today = new Date();
-        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds();
+        var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var dateTime = date + ' ' + time;
         console.log(`Scan result: ${decodedText}`, decodedResult);
         setQrScanResult(decodedText);
-        logQrScanRes("Message: '" + decodedText + "' decoded!" + "\n" + "TimeStamp: " + dateTime);
+        logQrScanRes("Decoded information:\n" + decodedText + "\nScanned at:" + dateTime);
         if (decodedText != ""){
             setQrs((currentQRs) => {
               return [... currentQRs, {id: crypto.randomUUID(), title: decodedText, completed: false}, ]
