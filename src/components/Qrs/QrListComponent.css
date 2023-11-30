@@ -50,6 +50,10 @@
     margin-left: 2.5rem;
   }
 
+  .checkbox-index:disabled{
+    cursor: not-allowed;
+  }
+
   .log-info {
     overflow-wrap: break-word;
     max-width:400px;

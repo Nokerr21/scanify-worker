@@ -27,15 +27,27 @@ export default async function readTag() {
             axios.get('/nfcs/' + decoder.decode(record.data)).then(function(result){
               if(result.data.batchNumber != undefined){
                 logReadTagTest("Success!");
-                logReadTag("Product information:\n" + result.data.info.toString() + "\n" + "Index: " + result.data.index.toString() +
-                "\n" + "Batch number: " + result.data.batchNumber.toString() + "\n" + "Read at: " + dateTime);
+                if(result.data.index != undefined) {
+                  logReadTag("Product information:\n" + result.data.info.toString() + "\nIndex: " + result.data.index.toString() +
+                  "\nBatch number: " + result.data.batchNumber.toString() + "\nTagged at: " + result.data.timeStamp.toString() +
+                  "\nRead at: " + dateTime);
+                }
+                else {
+                  logReadTag("Product information:\n" + result.data.info.toString() + "\nBatch number: " +
+                  result.data.batchNumber.toString() + "\nTagged at: " + result.data.timeStamp.toString() + "\nRead at: " + dateTime);
+                }
               }
               else{
                 logReadTagTest("Success!");
-                logReadTag("Product information:\n" + result.data.info.toString() + "\n" + "Index: " + result.data.index.toString() +
-                "\n" + "Read at: " + dateTime);
+                if(result.data.index != undefined) {
+                  logReadTag("Product information:\n" + result.data.info.toString() + "\nIndex: " + result.data.index.toString() +
+                  "\nTagged at: " + result.data.timeStamp.toString() + "\nRead at: " + dateTime);
+                }
+                else {
+                  logReadTag("Product information:\n" + result.data.info.toString() + "\nTagged at: " +
+                  result.data.timeStamp.toString() + "\nRead at: " + dateTime);
+                }
               }
-              
             }).catch(err => {
               if (err.name == 'TypeError') {
                 logReadTagTest("Oops!");
