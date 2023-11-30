@@ -41,7 +41,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
           logWriteTagTest("Writing tag... Step[3/4]");
           await ndef.write(id);
           logWriteTagTest("Success!");
-          logWriteTag("Written information:\n" + message +  "\n" + "Index: " + index + "\n" + "BatchNumber: " + batchNumber + "\n" + "Written at: " + dateTime);
+          logWriteTag("Written information:\n" + message +  "\n" + "Index: " + index + "\n" + "Batch number: " + batchNumber + "\n" + "Written at: " + dateTime);
           await sleep(1000);
           await writeTag(message, batchNumber);
         }
