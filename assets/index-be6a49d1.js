@@ -57,7 +57,7 @@ Read at: `+x))}).catch(I=>{I.name=="TypeError"?(Zr("Oops!"),Qr("This tag is no l
 `}function Oh(e){return new Promise(t=>setTimeout(t,e))}async function Ca(e,t,i=2){var a=document.getElementById("batchCheck");if("NDEFReader"in window){i==2&&Er("");const I=new NDEFReader;if(e===void 0)Zn("Oops!"),Er("Scan the QR code first.");else try{var c=new Date,f=c.getDate()+"-"+(c.getMonth()+1)+"-"+c.getFullYear(),g=c.getHours()+":"+c.getMinutes()+":"+c.getSeconds(),w=f+" "+g,C="";const D="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",z=10;for(let B=0;B<z;B++){let k=Math.floor(Math.random()*D.length);C+=D.substring(k,k+1)}if(a.checked==!0){Zn("Bring the tag near the reader.  Step[1/4]"),await I.write("isAccess"),Zn("Writing tag... Step[2/4]");var x=await Uu.post("/nfcs",{info:e,index:C,batchNumber:t}),S=x.data._id.toString();Zn("Writing tag... Step[3/4]"),await I.write(S),Zn("Success!"),Er(`Written information:
 `+e+`
 Index: `+C+`
-BatchNumber: `+t+`
+Batch number: `+t+`
 Written at: `+w),await Oh(1e3),await Ca(e,t)}else{var x=await Uu.post("/nfcs",{info:e,index:C}),S=x.data._id.toString();Zn("Bring the tag near the reader.  Step[1/2]"),await I.write(S),Zn("Success!"),Er(`Written information:
 `+e+`
 Index: `+C+`
