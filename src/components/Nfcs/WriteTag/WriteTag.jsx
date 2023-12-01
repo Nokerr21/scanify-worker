@@ -3,6 +3,8 @@ import { logWriteTag } from "./LogWriteTag";
 import { logWriteTagTest } from "./LogWriteTagTest";
 import { sleep } from "./Sleep";
 import axios from "../../../axios";
+import { getDateAndTime } from "../../Date/GetDateAndTime";
+import { generateNewIndex } from "../../Index/GenerateNewIndex";
 
 export default async function writeTag(message, batchNumber, times = 2) {
   var checkBoxBatch = document.getElementById("batchCheck");
@@ -18,24 +20,17 @@ export default async function writeTag(message, batchNumber, times = 2) {
     }
     else{
       try {
-        var today = new Date();
-        var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        var dateTime = date + ' ' + time;
+        var dateTime = getDateAndTime();
         if (checkBoxIndex.checked == true) {
-          var index = ""
-          const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-          const indexLength = 10
-          for (let iter = 0; iter < indexLength; iter++) {
-            let randNum = Math.floor(Math.random() * digits.length);
-            index += digits.substring(randNum, randNum + 1);
-          }
+          var index = generateNewIndex();
           if (checkBoxBatch.checked == true){
             while (checkBoxBatch.checked == true){
               logWriteTagTest("Bring the tag near the reader.  Step[1/4]");
               await ndef.write("isAccess");
               if (checkBoxBatch.checked == true) {
                 logWriteTagTest("Writing tag... Step[2/4]");
+                dateTime = getDateAndTime();
+                index = generateNewIndex();
                 var res = await axios.post('/nfcs', {
                   info: message,
                   timeStamp: dateTime,
@@ -75,6 +70,8 @@ export default async function writeTag(message, batchNumber, times = 2) {
               await ndef.write("isAccess");
               if (checkBoxBatch.checked == true) {
                 logWriteTagTest("Writing tag... Step[2/4]");
+                dateTime = getDateAndTime();
+                index = generateNewIndex();
                 var res = await axios.post('/nfcs', {
                   info: message,
                   timeStamp: dateTime,
