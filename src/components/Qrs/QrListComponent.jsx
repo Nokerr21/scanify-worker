@@ -15,8 +15,9 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
     
     function conditionalStopWrite () {
         var checkBoxSerial = document.getElementById("batchCheck");
+        writeTag();
         if (checkBoxSerial.checked == true) {
-            () => writeTag();
+            writeTag();
         }
     }
 
