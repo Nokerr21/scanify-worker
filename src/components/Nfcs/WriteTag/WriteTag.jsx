@@ -63,21 +63,22 @@ export default async function writeTag(message, batchNumber, times = 2) {
         }
         else {
           if (checkBoxBatch.checked == true){
-            logWriteTagTest("Bring the tag near the reader.  Step[1/4]");
-            await ndef.write("isAccess");
-            logWriteTagTest("Writing tag... Step[2/4]");
-            var res = await axios.post('/nfcs', {
-              info: message,
-              timeStamp: dateTime,
-              batchNumber: batchNumber,
-            })
-            var id = res.data._id.toString();
-            logWriteTagTest("Writing tag... Step[3/4]");
-            await ndef.write(id);
-            logWriteTagTest("Success!");
-            logWriteTag("Written information:\n" + message + "\n" + "Batch number: " + batchNumber + "\n" + "Written at: " + dateTime);
-            await sleep(1000);
-            await writeTag(message, batchNumber);
+            while (checkBoxBatch.checked == true) {
+              logWriteTagTest("Bring the tag near the reader.  Step[1/4]");
+              await ndef.write("isAccess");
+              logWriteTagTest("Writing tag... Step[2/4]");
+              var res = await axios.post('/nfcs', {
+                info: message,
+                timeStamp: dateTime,
+                batchNumber: batchNumber,
+              })
+              var id = res.data._id.toString();
+              logWriteTagTest("Writing tag... Step[3/4]");
+              await ndef.write(id);
+              logWriteTagTest("Success!");
+              logWriteTag("Written information:\n" + message + "\n" + "Batch number: " + batchNumber + "\n" + "Written at: " + dateTime);
+              await sleep(1000);
+            }
           }
           else {
             var res = await axios.post('/nfcs', {
