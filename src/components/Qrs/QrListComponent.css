@@ -95,6 +95,11 @@
     align-items: center;
   }
 
+  .checkbox-stop-write {
+    opacity: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   @media screen and (min-width: 700px) {
     .row-list {
       gap: 0.5rem;
@@ -113,13 +118,13 @@
     }
   
     .checkbox-serial {
-      height: 15px;
-      width: 15px;
+      height: 17px;
+      width: 17px;
     }
   
     .checkbox-index {
-      height: 15px;
-      width: 15px;
+      height: 17px;
+      width: 17px;
     }
   
     .log-info {
