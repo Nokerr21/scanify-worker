@@ -95,11 +95,6 @@
     align-items: center;
   }
 
-  .checkbox-stop-write {
-    opacity: 0;
-    -webkit-tap-highlight-color: transparent;
-  }
-
   @media screen and (min-width: 700px) {
     .row-list {
       gap: 0.5rem;
