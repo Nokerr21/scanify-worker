@@ -12,14 +12,10 @@ import "./QrListComponent.css";
 export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
     
     var checkBoxSerial = document.getElementById("batchCheck");
-    var checkStopWrite = document.getElementById("stopWriteCheck");
     
-    function checkSameCheckBox () {
-        if (checkBoxSerial.checked == true) {
-            checkStopWrite.checked = false;
-        }
-        else {
-            checkStopWrite.checked = true;
+    function conditionalStopWrite () {
+        if (checkBoxSerial.checked == false) {
+            writeTag();
         }
     }
 
@@ -28,9 +24,8 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
             <label className="labl-list">SCANNED QR CODES</label>
             <div className="checkBoxes-div">
                 <label className="serial-label">
-                    <input className="checkbox-serial" type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber()); checkSameCheckBox()}}/>
+                    <input className="checkbox-serial" type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber()); checkSameCheckBox(); conditionalStopWrite()}}/>
                     SERIAL WRITING
-                    <input className="checkbox-stop-write" type="checkbox" id="stopWriteCheck" />
                 </label>
                 <label className="index-label">
                     <input className="checkbox-index" type="checkbox" id="indexCheck" />
