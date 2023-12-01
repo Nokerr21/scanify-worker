@@ -13,12 +13,17 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
     return (
         <div className="row-list">
             <label className="labl-list">SCANNED QR CODES</label>
-            <label className="serial-label">
-                <input className="checkbox-serial" type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber())}}/>
-                SERIAL WRITING
-                <input className="checkbox-index" type="checkbox" id="indexCheck" />
-                INDEXING
-            </label>
+            <div className="checkBoxes-div">
+                <label className="serial-label">
+                    <input className="checkbox-serial" type="checkbox" id="batchCheck" onClick={() => {setBatchNumber(newBatchNumber()); enableButtons(); logBatchNumber(newBatchNumber())}}/>
+                    SERIAL WRITING
+                </label>
+                <label className="index-label">
+                    <input className="checkbox-index" type="checkbox" id="indexCheck" />
+                    INDEXING
+                </label>
+            </div>
+
             <pre className="log-info" id="logSelectedQr"></pre>
             <pre className="log-info" id="logBatchNumber"></pre>
             <ul className="list-qrs">
