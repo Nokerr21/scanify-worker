@@ -74,3 +74,26 @@
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
+
+  @media screen and (min-width: 700px) {
+    .row-btn-write {
+      gap: 2rem;
+    }
+
+    .btn-write {
+      padding: 0.5em 0.75em 0.5em 0.75em;
+      margin-left: 11.6rem;
+      margin-right: 11.6rem;
+      font-size: large;
+    }
+
+    .log-write {
+      max-width: 700px;
+      font-size: large;
+    }
+
+    .log-write-test {
+      max-width: 700px;
+      font-size: large;
+    }
+  }

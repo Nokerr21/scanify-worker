@@ -76,3 +76,60 @@
     color: hsl(0, 0%, 70%);
     cursor: not-allowed;
   }
+
+  @media screen and (min-width: 700px) {
+    .button-row {
+      gap: 1rem;
+    }
+
+    .litem {
+      width: 370px;
+      font-size: large;
+    }
+  
+    .btn-list-write {
+      padding: 0.75em 1em 0.75em 1em;
+      font-size: medium;
+    }
+    
+    .btn-delete {
+      padding: 0.75em 1em 0.75em 1em;
+      font-size: medium;
+    }
+
+    .row-list {
+      gap: 0.5rem;
+    }
+
+    .labl-list {
+      font-size: x-large;
+    }
+
+    .serial-label {
+      font-size: large;
+    }
+  
+    .index-label {
+      font-size: large;
+    }
+  
+    .checkbox-serial {
+      height: 15px;
+      width: 15px;
+    }
+  
+    .checkbox-index {
+      height: 15px;
+      width: 15px;
+    }
+  
+    .log-info {
+      max-width: 700px;
+      font-size: large;
+    }
+    
+    .list-qrs li {
+      gap: 2rem;
+    }
+  }
+  
