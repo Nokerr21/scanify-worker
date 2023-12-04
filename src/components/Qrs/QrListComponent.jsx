@@ -24,7 +24,6 @@ export function QrListComponent({ qrs, setQrs, setBatchNumber, batchNumber }) {
                     INDEXING
                 </label>
             </div>
-
             <pre className="log-info" id="logSelectedQr"></pre>
             <pre className="log-info" id="logBatchNumber"></pre>
             <ul className="list-qrs">

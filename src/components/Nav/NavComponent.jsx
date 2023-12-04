@@ -68,8 +68,8 @@ export default function Nav() {
             <div className="wrapper">
                 <ul>
                     <li><a href="https://nokerr21.github.io/nfcontrol/">Manual</a></li>
-                    <li><a href="https://nokerr21.github.io/nfcontrol/">About</a></li>
-                    <li><a href='https://nokerr21.github.io/nfcontrol/'>Contact</a></li>
+                    <li><a href="https://nokerr21.github.io/nfcontrol-about/">About</a></li>
+                    <li><a href='https://nokerr21.github.io/nfcontrol-contact/'>Contact</a></li>
                 </ul>
             </div>
         </nav>
