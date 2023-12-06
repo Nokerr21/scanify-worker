@@ -1,6 +1,7 @@
 import logReadTag from "./LogReadTag";
 import axios from "../../../axios";
 import logReadTagTest from "./LogReadTagTest"
+import { getDateAndTime } from "../../Date/GetDateAndTime";
 
 export default async function readTag() {
   if ("NDEFReader" in window) {
@@ -20,10 +21,7 @@ export default async function readTag() {
           const decoder = new TextDecoder();
           logReadTagTest("Reading tag... Step[2/3]");
           for (const record of event.message.records) {
-            var today = new Date();
-            var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
-            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-            var dateTime = date + ' ' + time;
+            var dateTime = getDateAndTime();
             axios.get('/nfcs/' + decoder.decode(record.data)).then(function(result){
               if(result.data.batchNumber != undefined){
                 logReadTagTest("Success!");

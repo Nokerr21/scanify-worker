@@ -1,6 +1,7 @@
 import { Html5QrcodeScanner, Html5QrcodeScanType } from "html5-qrcode";
 import { logQrScanRes } from "./LogQrScanRes";
 import { sleep } from "../../Nfcs/WriteTag/Sleep";
+import { getDateAndTime } from "../../Date/GetDateAndTime";
 
 export function renderQrScanner( setQrs, setQrScanResult ){
     const scannerConfig = {
@@ -16,10 +17,7 @@ export function renderQrScanner( setQrs, setQrScanResult ){
     html5QrcodeScanner.render(onScanSuccess);
 
     async function onScanSuccess(decodedText, decodedResult) {
-        var today = new Date();
-        var date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        var dateTime = date + ' ' + time;
+        var dateTime = getDateAndTime();
         console.log(`Scan result: ${decodedText}`, decodedResult);
         setQrScanResult(decodedText);
         logQrScanRes("Decoded information:\n" + decodedText + "\nScanned at: " + dateTime);
