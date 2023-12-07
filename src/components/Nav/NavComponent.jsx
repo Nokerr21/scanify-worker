@@ -67,9 +67,9 @@ export default function Nav() {
             <label htmlFor="active" className="close-btn"></label>
             <div className="wrapper">
                 <ul>
-                    <li><a href="https://nokerr21.github.io/nfcontrol-worker-manual/">Manual</a></li>
-                    <li><a href="https://nokerr21.github.io/nfcontrol-about/">About</a></li>
-                    <li><a href='https://nokerr21.github.io/nfcontrol-contact/'>Contact</a></li>
+                    <li><a href="https://nokerr21.github.io/scanify-worker-manual/">Manual</a></li>
+                    <li><a href="https://nokerr21.github.io/scanify-about/">About</a></li>
+                    <li><a href='https://nokerr21.github.io/scanify-contact/'>Contact</a></li>
                 </ul>
             </div>
         </nav>
