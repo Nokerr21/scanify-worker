@@ -16,13 +16,16 @@
   }
 
   .site-logo {
-    background-image: url(../../../images/logo.png);
-    background-repeat: no-repeat;
     height: 70px;
     width: 120px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 2rem;
+  }
+  
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 3px;
+    width: 200px;
+    height: 120px;
   }
 
   .wrapper{

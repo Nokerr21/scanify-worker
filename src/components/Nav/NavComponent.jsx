@@ -1,4 +1,5 @@
 import './NavComponent.css'
+import logo from '../../../images/logoK6.png'
 
 export default function Nav() {
 
@@ -51,7 +52,9 @@ export default function Nav() {
 
     return (
         <nav className="nav">
-            <image className='site-logo'></image>
+            <image className='site-logo'>
+                <img src={logo} className='logo'/>
+            </image>
             <input onChange={toggleTheme} className='checkbox-theme' type="checkbox" defaultChecked={selectedTheme === 'light'} />
             <label className="checkbox-theme-label">
                 <svg className='sun-icon' width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
