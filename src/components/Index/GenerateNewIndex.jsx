@@ -1,10 +1,12 @@
 export function generateNewIndex () {
     var index = "";
-    const digits = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const signs = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const indexLength = 10;
-    for (let iter = 0; iter < indexLength; iter++) {
-        let randNum = Math.floor(Math.random() * digits.length);
-        index += digits.substring(randNum, randNum + 1);
+
+    for (let i = 0; i < indexLength; i++) {
+        let randNum = Math.floor(Math.random() * signs.length);
+        index += signs.charAt(randNum);
     }
+
     return index;
 }
