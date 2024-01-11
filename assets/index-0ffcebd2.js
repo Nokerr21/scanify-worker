@@ -70,10 +70,10 @@ Batch number: `+t+`
 Written at: `+f),await Hu(1e3)}else Nt(""),xn("");else{var w=await To.post("/nfcs",{info:e,timeStamp:f,index:g}),C=w.data._id.toString();Nt("Bring the tag near the reader.  Step[1/2]"),await x.write(C),Nt("Success!"),xn(`Written information:
 `+e+`
 Index: `+g+`
-Written at: `+f)}}else if(a.checked==!0)for(;a.checked==!0;)if(Nt("Bring the tag near the reader.  Step[1/4]"),await x.write("isAccess"),a.checked==!0){Nt("Writing tag... Step[2/4]"),f=ko(),g=Hl();var w=await To.post("/nfcs",{info:e,timeStamp:f,batchNumber:t}),C=w.data._id.toString();Nt("Writing tag... Step[3/4]"),await x.write(C),Nt("Success!"),xn(`Written information:
+Written at: `+f)}}else if(a.checked==!0)for(;a.checked==!0;)if(Nt("Bring the tag near the reader.  Step[1/4]"),await x.write("isAccess"),a.checked==!0){Nt("Writing tag... Step[2/4]"),f=ko(),g=Hl();var w=await To.post("/nfcs",{info:e,timeStamp:f,batchNumber:t}),C=w.data._id.toString();console.log(C),Nt("Writing tag... Step[3/4]"),await x.write(C),Nt("Success!"),xn(`Written information:
 `+e+`
 Batch number: `+t+`
-Written at: `+f),await Hu(1e3)}else Nt(""),xn("");else{var w=await To.post("/nfcs",{info:e,timeStamp:f}),C=w.data._id.toString();Nt("Bring the tag near the reader.  Step[1/2]"),await x.write(C),Nt("Success!"),xn(`Written information:
+Written at: `+f),await Hu(1e3)}else Nt(""),xn("");else{var w=await To.post("/nfcs",{info:e,timeStamp:f}),C=w.data._id.toString();console.log(C),Nt("Bring the tag near the reader.  Step[1/2]"),await x.write(C),Nt("Success!"),xn(`Written information:
 `+e+`
 Written at: `+f)}}catch(S){if(i>0&&S.name!="AbortError")return i==2?(xn(`A tag writing issue occurred! 
 Try `+i+" more times."),console.log(S)):(xn(`A tag writing issue occurred. 
