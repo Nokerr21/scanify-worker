@@ -40,7 +40,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
                 var id = res.data._id.toString();
                 logWriteTagInfo("Writing tag... Step[3/4]");
                 await ndef.write(id);
-                //await ndef.makeReadOnly();
+                await ndef.makeReadOnly();
                 logWriteTagInfo("Success!");
                 logWriteTag("Written information:\n" + message +  "\n" + "Index: " + index + "\n" + "Batch number: " + batchNumber + "\n" + "Written at: " + dateTime);
                 await sleep(1000);
@@ -60,7 +60,7 @@ export default async function writeTag(message, batchNumber, times = 2) {
             var id = res.data._id.toString();
             logWriteTagInfo("Bring the tag near the reader.  Step[1/2]");
             await ndef.write(id);
-            await ndef.makeReadOnly();
+            //await ndef.makeReadOnly();
             logWriteTagInfo("Success!");
             logWriteTag("Written information:\n" + message  + "\n" + "Index: " + index + "\n" + "Written at: " + dateTime);
           }
